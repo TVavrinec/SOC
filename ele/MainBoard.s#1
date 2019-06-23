@@ -18479,9 +18479,9 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <part name="C2" library="rcl_upravena" deviceset="C-EU" device="C1206" value="10u"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R3" library="rcl_upravena" deviceset="R-EU_" device="R0805" value="100k"/>
+<part name="R3" library="rcl_upravena" deviceset="R-EU_" device="0204/5" value="100k"/>
 <part name="Q5" library="transistors" deviceset="P-MOSFET" device="-TO220V"/>
-<part name="Q6" library="transistors" deviceset="N-MOSFET" device="-SOT23-GSD"/>
+<part name="Q6" library="transistors" deviceset="N-MOSFET" device="-TO92"/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
