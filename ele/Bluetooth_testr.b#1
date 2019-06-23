@@ -65,46 +65,6 @@
 <wire x1="0" y1="33.01" x2="0" y2="0" width="0" layer="20"/>
 <dimension x1="0" y1="0" x2="33.02" y2="0" x3="16.51" y3="-7.62" textsize="1.778" layer="1"/>
 <dimension x1="0" y1="33.01" x2="0" y2="0" x3="-8.89" y3="16.505" textsize="1.778" layer="1"/>
-<text x="2.10311875" y="29.220159375" size="1.778" layer="25">-</text>
-<text x="4.09701875" y="24.70658125" size="1.778" layer="25">P2_0</text>
-<text x="4.14528125" y="22.240240625" size="1.778" layer="25">SDA</text>
-<text x="4.14528125" y="17.0815" size="1.778" layer="25">P1_5</text>
-<text x="4.14528125" y="14.5542" size="1.778" layer="25">P1_4</text>
-<text x="4.00811875" y="12.04468125" size="1.778" layer="25">P1_3</text>
-<text x="3.947159375" y="9.45641875" size="1.778" layer="25">P1_2</text>
-<text x="4.048759375" y="7.101840625" size="1.778" layer="25">P1_1</text>
-<text x="3.81" y="5.08" size="1.778" layer="25">DVDD2</text>
-<text x="28.983940625" y="28.298140625" size="1.778" layer="25" rot="R180">RBIAS</text>
-<text x="29.110940625" y="26.11881875" size="1.778" layer="25" rot="R180">AVDD4</text>
-<text x="29.16681875" y="23.484840625" size="1.778" layer="25" rot="R180">AVDD1</text>
-<text x="29.0703" y="21.082" size="1.778" layer="25" rot="R180">AVDD2</text>
-<text x="29.0703" y="18.773140625" size="1.778" layer="25" rot="R180">RF_N</text>
-<text x="29.11348125" y="15.80641875" size="1.778" layer="25" rot="R180">RF_P</text>
-<text x="29.13888125" y="13.3604" size="1.778" layer="25" rot="R180">AVDD3</text>
-<text x="29.105859375" y="10.970259375" size="1.778" layer="25" rot="R180">XOSC_Q2</text>
-<text x="29.085540625" y="8.35151875" size="1.778" layer="25" rot="R180">XOSC_Q1</text>
-<text x="28.9052" y="5.84961875" size="1.778" layer="25" rot="R180">AVDD5</text>
-<text x="4.08431875" y="27.00781875" size="1.778" layer="25">GND</text>
-<text x="5.996940625" y="29.0195" size="1.778" layer="26" rot="MR270">DCOUPL</text>
-<text x="8.43788125" y="28.91028125" size="1.778" layer="26" rot="MR270">DVDD1</text>
-<text x="11.03121875" y="28.844240625" size="1.778" layer="26" rot="MR270">P1_6</text>
-<text x="13.693140625" y="28.88741875" size="1.778" layer="26" rot="MR270">P1_7</text>
-<text x="16.20011875" y="28.9306" size="1.778" layer="26" rot="MR270">P2_0</text>
-<text x="18.75028125" y="29.03981875" size="1.778" layer="26" rot="MR270">P2_1/DD</text>
-<text x="21.34361875" y="29.105859375" size="1.778" layer="26" rot="MR270">P2_2/DC</text>
-<text x="23.82011875" y="29.12871875" size="1.778" layer="26" rot="MR270">P2_3/OSC32K_Q2</text>
-<text x="26.43631875" y="29.085540625" size="1.778" layer="26" rot="MR270">P2_4/OSC32K_Q1</text>
-<text x="28.8544" y="29.085540625" size="1.778" layer="26" rot="MR270">AVDD6</text>
-<text x="4.2672" y="3.7211" size="1.778" layer="26" rot="MR90">P1_0</text>
-<text x="6.70051875" y="3.850640625" size="1.778" layer="26" rot="MR90">P0_7</text>
-<text x="9.133840625" y="3.86841875" size="1.778" layer="26" rot="MR90">P0_6</text>
-<text x="11.98371875" y="3.850640625" size="1.778" layer="26" rot="MR90">P0_5</text>
-<text x="14.42211875" y="3.7592" size="1.778" layer="26" rot="MR90">P0_4</text>
-<text x="17.145" y="3.74141875" size="1.778" layer="26" rot="MR90">P0_3</text>
-<text x="19.580859375" y="3.596640625" size="1.778" layer="26" rot="MR90">P0_2</text>
-<text x="22.11831875" y="3.67538125" size="1.778" layer="26" rot="MR90">P0_1</text>
-<text x="24.13" y="3.81" size="1.778" layer="26" rot="MR90">P0_0</text>
-<text x="27.09671875" y="3.75158125" size="1.778" layer="26" rot="MR90">RESET_N</text>
 </plain>
 <libraries>
 <library name="texas-cc2541">
@@ -482,18 +442,10 @@ design rules under a new name.</description>
 </autorouter>
 <elements>
 <element name="IC1" library="texas-cc2541" package="QFN40-6X6" value="CC2541" x="16.51" y="16.51"/>
-<element name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="16.51" y="2.54" smashed="yes">
-<attribute name="VALUE" x="3.81" y="-0.635" size="1.27" layer="27"/>
-</element>
-<element name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="2.54" y="16.51" smashed="yes" rot="R270">
-<attribute name="VALUE" x="-0.635" y="29.21" size="1.27" layer="27" rot="R270"/>
-</element>
-<element name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="30.48" y="16.51" smashed="yes" rot="R90">
-<attribute name="VALUE" x="33.655" y="3.81" size="1.27" layer="27" rot="R90"/>
-</element>
-<element name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="16.51" y="30.45968125" smashed="yes" rot="R180">
-<attribute name="VALUE" x="29.21" y="33.63468125" size="1.27" layer="27" rot="R180"/>
-</element>
+<element name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="16.51" y="2.54"/>
+<element name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="2.54" y="16.51" rot="R270"/>
+<element name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="30.48" y="16.51" rot="R90"/>
+<element name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="1X10" package3d_urn="urn:adsk.eagle:package:22406/2" value="" x="16.51" y="30.45968125" rot="R180"/>
 </elements>
 <signals>
 <signal name="P2_0">

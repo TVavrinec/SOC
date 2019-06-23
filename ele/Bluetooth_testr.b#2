@@ -63,8 +63,6 @@
 <wire x1="33.02" y1="0" x2="33.02" y2="33.02" width="0" layer="20"/>
 <wire x1="33.02" y1="33.02" x2="0" y2="33.01" width="0" layer="20"/>
 <wire x1="0" y1="33.01" x2="0" y2="0" width="0" layer="20"/>
-<dimension x1="0" y1="0" x2="33.02" y2="0" x3="16.51" y3="-7.62" textsize="1.778" layer="1"/>
-<dimension x1="0" y1="33.01" x2="0" y2="0" x3="-8.89" y3="16.505" textsize="1.778" layer="1"/>
 </plain>
 <libraries>
 <library name="texas-cc2541">
