@@ -4868,10 +4868,9 @@ design rules under a new name.</description>
 <contactref element="X1" pad="2"/>
 <wire x1="11.3252" y1="32.766" x2="8.509" y2="35.5822" width="2.54" layer="1"/>
 <wire x1="8.509" y1="35.5822" x2="8.509" y2="39.497" width="2.54" layer="1"/>
-<wire x1="9.525" y1="40.513" x2="9.525" y2="49.53" width="2.54" layer="1"/>
-<wire x1="9.525" y1="49.53" x2="11.176" y2="51.181" width="2.54" layer="1"/>
+<wire x1="11.176" y1="42.164" x2="11.176" y2="51.181" width="2.54" layer="1"/>
 <wire x1="5.715" y1="39.37" x2="8.382" y2="39.37" width="2.54" layer="1"/>
-<wire x1="8.509" y1="39.497" x2="9.525" y2="40.513" width="2.54" layer="1"/>
+<wire x1="8.509" y1="39.497" x2="11.176" y2="42.164" width="2.54" layer="1"/>
 <wire x1="8.382" y1="39.37" x2="8.509" y2="39.497" width="2.54" layer="1"/>
 </signal>
 <signal name="M1B">
