@@ -19594,12 +19594,6 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 </net>
 <net name="GPIO32_5V" class="0">
 <segment>
-<pinref part="IM11" gate="G$1" pin="HIGH3"/>
-<wire x1="264.16" y1="129.54" x2="289.56" y2="129.54" width="0.1524" layer="91"/>
-<label x="271.78" y="129.54" size="1.778" layer="95"/>
-<pinref part="JP1" gate="A" pin="3"/>
-</segment>
-<segment>
 <pinref part="IM11" gate="G$1" pin="HIGH4"/>
 <wire x1="264.16" y1="127" x2="289.56" y2="127" width="0.1524" layer="91"/>
 <label x="271.78" y="127" size="1.778" layer="95"/>
@@ -19718,12 +19712,6 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <label x="96.52" y="200.66" size="1.778" layer="95"/>
 <junction x="106.68" y="200.66"/>
 </segment>
-<segment>
-<pinref part="IM6" gate="G$1" pin="IO16"/>
-<wire x1="96.52" y1="195.58" x2="106.68" y2="195.58" width="0.1524" layer="91"/>
-<label x="96.52" y="195.58" size="1.778" layer="95"/>
-<junction x="106.68" y="195.58"/>
-</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -19782,6 +19770,22 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <label x="175.26" y="73.66" size="1.778" layer="95"/>
 <wire x1="182.88" y1="73.66" x2="170.18" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="JP11" gate="A" pin="3"/>
+</segment>
+</net>
+<net name="PWM3" class="0">
+<segment>
+<pinref part="IM6" gate="G$1" pin="IO16"/>
+<wire x1="96.52" y1="195.58" x2="106.68" y2="195.58" width="0.1524" layer="91"/>
+<label x="96.52" y="195.58" size="1.778" layer="95"/>
+<junction x="106.68" y="195.58"/>
+</segment>
+</net>
+<net name="GPIO33_5V" class="0">
+<segment>
+<pinref part="IM11" gate="G$1" pin="HIGH3"/>
+<wire x1="264.16" y1="129.54" x2="289.56" y2="129.54" width="0.1524" layer="91"/>
+<label x="271.78" y="129.54" size="1.778" layer="95"/>
+<pinref part="JP1" gate="A" pin="3"/>
 </segment>
 </net>
 </nets>
