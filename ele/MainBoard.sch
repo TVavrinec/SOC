@@ -28729,6 +28729,11 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="P+20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND55" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E5-10.5" package3d_urn="urn:adsk.eagle:package:23372/1"/>
+<part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="P+8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E5-10.5" package3d_urn="urn:adsk.eagle:package:23372/1"/>
+<part name="JP7" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="/90" package3d_urn="urn:adsk.eagle:package:22404/2"/>
+<part name="P+11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -30339,6 +30344,13 @@ Robotarna</text>
 <attribute name="NAME" x="285.75" y="137.795" size="1.778" layer="95"/>
 <attribute name="VALUE" x="285.75" y="121.92" size="1.778" layer="96"/>
 </instance>
+<instance part="JP7" gate="A" x="325.12" y="129.54" smashed="yes">
+<attribute name="NAME" x="318.77" y="137.795" size="1.778" layer="95"/>
+<attribute name="VALUE" x="318.77" y="121.92" size="1.778" layer="96"/>
+</instance>
+<instance part="P+11" gate="1" x="312.42" y="144.78" smashed="yes">
+<attribute name="VALUE" x="309.88" y="139.7" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -30562,6 +30574,24 @@ Robotarna</text>
 <junction x="55.88" y="104.14"/>
 <wire x1="55.88" y1="104.14" x2="55.88" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="P+10" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="JP7" gate="A" pin="4"/>
+<wire x1="322.58" y1="127" x2="312.42" y2="127" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="127" x2="312.42" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="JP7" gate="A" pin="3"/>
+<wire x1="312.42" y1="129.54" x2="312.42" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="132.08" x2="312.42" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="134.62" x2="312.42" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="322.58" y1="129.54" x2="312.42" y2="129.54" width="0.1524" layer="91"/>
+<junction x="312.42" y="129.54"/>
+<pinref part="JP7" gate="A" pin="2"/>
+<wire x1="312.42" y1="132.08" x2="322.58" y2="132.08" width="0.1524" layer="91"/>
+<junction x="312.42" y="132.08"/>
+<pinref part="JP7" gate="A" pin="1"/>
+<wire x1="322.58" y1="134.62" x2="312.42" y2="134.62" width="0.1524" layer="91"/>
+<junction x="312.42" y="134.62"/>
+<pinref part="P+11" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -31564,6 +31594,16 @@ Robotarna</text>
 <attribute name="NAME" x="265.303" y="89.3826" size="1.778" layer="95"/>
 <attribute name="VALUE" x="265.303" y="84.3026" size="1.778" layer="96"/>
 </instance>
+<instance part="GND27" gate="1" x="254" y="76.2" smashed="yes">
+<attribute name="VALUE" x="251.46" y="73.66" size="1.778" layer="96"/>
+</instance>
+<instance part="P+8" gate="VCC" x="254" y="101.6" smashed="yes">
+<attribute name="VALUE" x="256.54" y="99.06" size="1.778" layer="96"/>
+</instance>
+<instance part="C6" gate="G$1" x="254" y="88.9" smashed="yes">
+<attribute name="NAME" x="255.143" y="89.3826" size="1.778" layer="95"/>
+<attribute name="VALUE" x="255.143" y="84.3026" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -31664,6 +31704,11 @@ Robotarna</text>
 <pinref part="D3" gate="G$1" pin="A"/>
 <wire x1="276.86" y1="78.74" x2="276.86" y2="86.36" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<wire x1="254" y1="83.82" x2="254" y2="78.74" width="0.1524" layer="91"/>
+<pinref part="GND27" gate="1" pin="GND"/>
+<pinref part="C6" gate="G$1" pin="-"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
@@ -31724,6 +31769,11 @@ Robotarna</text>
 <pinref part="D3" gate="G$1" pin="C"/>
 <pinref part="P+20" gate="VCC" pin="VCC"/>
 <wire x1="276.86" y1="91.44" x2="276.86" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="254" y1="91.44" x2="254" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="P+8" gate="VCC" pin="VCC"/>
+<pinref part="C6" gate="G$1" pin="+"/>
 </segment>
 </net>
 <net name="BAT_PROT1" class="0">
