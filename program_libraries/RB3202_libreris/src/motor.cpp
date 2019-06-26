@@ -92,6 +92,10 @@ void motor::motors_power(int power_r, int power_l)
         sed_pwm(1, 0, power_r);
 }
 
+void motor::stop()
+{
+    digitalWrite(RB3202::SLEEP_PIN, LOW);
+}
 motor::~motor()
 {
 }
