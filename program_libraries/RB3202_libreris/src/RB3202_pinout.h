@@ -1,3 +1,6 @@
+#include <driver/adc.h>
+#include <driver/gpio.h>
+
 namespace RB3202
 {  
     static const gpio_num_t BOARD_OFF = GPIO_NUM_12;
@@ -23,6 +26,9 @@ namespace RB3202
     static const gpio_num_t LED_G = GPIO_NUM_22;
     static const gpio_num_t LED_B = GPIO_NUM_23;
 
-    static const gpio_num_t BATERI = GPIO_NUM_33;
+    static const gpio_num_t INTELLIGENT_LED = GPIO_NUM_14;
 
-}
+    static const gpio_num_t INTELLIGENT_SERVO = GPIO_NUM_23;
+
+    static const gpio_num_t BATERI = GPIO_NUM_33;
+};

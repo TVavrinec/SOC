@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-class motor
+class driver
 {
 private:
     void sed_motor_pin(gpio_num_t pin, uint8_t channel);
@@ -16,7 +16,7 @@ public:
     void motor_start_working();
     void stop();
     void sed_motor();
-    void motors_power(int power_0, int power_1);
+    void power(int power_0, int power_1);
     void stop(bool motor);
-    ~motor();
+    ~driver();
 };
