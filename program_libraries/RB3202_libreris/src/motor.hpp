@@ -3,7 +3,7 @@
 class driver
 {
 private:
-    void sed_motor_pin(gpio_num_t pin, uint8_t channel);
+    void sed_motor_pwm_pin(gpio_num_t pin, uint8_t channel);
     void sed_all_motor_pins();
     
     void go_forward(bool motor, int pwm);

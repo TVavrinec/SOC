@@ -1,10 +1,10 @@
-#include "RB3202_pinout.h"
+#include "RB3202_pinout.hpp"
 #include "motor.hpp"
 
 #define FREGUENCY 1000
 #define MAX_PWM 1024
 
-void driver::sed_motor_pin(gpio_num_t pin, uint8_t channel)
+void driver::sed_motor_pwm_pin(gpio_num_t pin, uint8_t channel)
 {
     ledcSetup(channel,FREGUENCY,10);
     ledcWrite(channel,MAX_PWM);
@@ -13,16 +13,11 @@ void driver::sed_motor_pin(gpio_num_t pin, uint8_t channel)
 
 void driver::sed_all_motor_pins()
 {
-    sed_motor_pin(RB3202::PWM_M0, 0);
-    sed_motor_pin(RB3202::PWM_M1, 1);
-    sed_motor_pin(RB3202::PWM_M2, 2);
-    sed_motor_pin(RB3202::PWM_M3, 3);
-}
-
-void driver::motor_start_working()
-{
     pinMode(RB3202::SLEEP_PIN,OUTPUT);
-    digitalWrite(RB3202::SLEEP_PIN,HIGH);
+    sed_motor_pwm_pin(RB3202::PWM_M0, 0);
+    sed_motor_pwm_pin(RB3202::PWM_M1, 1);
+    sed_motor_pwm_pin(RB3202::PWM_M2, 2);
+    sed_motor_pwm_pin(RB3202::PWM_M3, 3);
 }
 
 int driver::percent_to_pwm(float percent)
@@ -55,7 +50,7 @@ void driver::go_back(bool motor, int pwm)
     {
         ledcWrite(2,percent_to_pwm(pwm));
         ledcWrite(3,MAX_PWM);
-    }
+    } 
 }
 
 void driver::sed_pwm(bool motor, bool direction, int pwm)
@@ -73,6 +68,11 @@ void driver::sed_pwm(bool motor, bool direction, int pwm)
 
 
 
+
+void driver::motor_start_working()
+{
+    digitalWrite(RB3202::SLEEP_PIN,HIGH);
+}
 
 void driver::sed_motor()
 {
@@ -97,6 +97,7 @@ void driver::stop()
 {
     digitalWrite(RB3202::SLEEP_PIN, LOW);
 }
+
 driver::~driver()
 {
 }

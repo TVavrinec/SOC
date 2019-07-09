@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "RB3202_sed.h"
+#include "RB3202_sed.hpp"
 
 void rb_periphery::sed_periphery()
 {

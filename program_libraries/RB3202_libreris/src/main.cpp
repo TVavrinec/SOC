@@ -1,39 +1,59 @@
 #include <Arduino.h>
-#include "RB3202_sed.h"
-#include "motor.hpp"
+#include "RB3202_lbr.hpp"
+#include "RBControl_manager.hpp"
 
 driver motor;
+
+using namespace rb;
 
 void setup() 
 {
   Serial.begin(115200);
   rb_periphery::sed_periphery();
-  motor.motor_start_working();
+
   motor.sed_motor();
+
+  delay(1000);
+
+  Manager::get().install();
+  Manager::get().initSmartServoBus(4,GPIO_NUM_14);
+  Manager::get().servoBus().limit(0,0_deg,100_deg);
+  Manager::get().servoBus().limit(3,80_deg,180_deg);
+
+  motor.motor_start_working();
+
+  Manager::get().servoBus().set(3,100_deg,180.f,1.5f);
+  delay(100);
+  Manager::get().servoBus().set(0,0_deg,180.f,1.5f);
+  delay(2000);
+
+  //while (digitalRead(RB3202::SW1))
+  //{
+    delay(1);
+  //}
+  
+  for(float a = 0; a<100;a++)
+  {
+    motor.power(a,a);
+    delay(5);
+  }
+  delay(500);
+  for(float a = 100; a>0;a--)
+  {
+    motor.power(a,a);
+    delay(5);
+  }
 }
 
-void loop() 
+void loop()
 {
-  digitalWrite(GPIO_NUM_21, false);
-  digitalWrite(GPIO_NUM_22, false);
-  digitalWrite(GPIO_NUM_23, false);
-  motor.power(0, 0);
-
-  if(!digitalRead(RB3202::SW1))
-  {
-    motor.power(50, 50);
-    digitalWrite(GPIO_NUM_21, true);
-  }
-  else if(!digitalRead(RB3202::SW2))
-  {
-    Serial.println("SW2");
-    motor.power(-50, -50);
-    digitalWrite(GPIO_NUM_22, true);
-  }
-  else if(!digitalRead(RB3202::SW3))
-  {
-    Serial.println("SW3");
-    digitalWrite(GPIO_NUM_23, true);
-  }
+  Manager::get().servoBus().set(3,100_deg,180.f,1.5f);
   delay(100);
+  Manager::get().servoBus().set(0,0_deg,180.f,1.5f);
+  delay(2000);
+
+  Manager::get().servoBus().set(3,0_deg,180.f,1.5f);
+  delay(100);
+  Manager::get().servoBus().set(0,100_deg,180.f,1.5f);
+  delay(10000);
 }
