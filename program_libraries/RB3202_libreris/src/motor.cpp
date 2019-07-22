@@ -25,7 +25,7 @@ int driver::percent_to_pwm(float percent)
     return MAX_PWM - int((percent*0.01)*MAX_PWM);
 }
 
-void driver::go_forward(bool motor, int pwm)
+void driver::go_forward(bool motor, float pwm)
 {
     if(motor)
     {
@@ -39,7 +39,7 @@ void driver::go_forward(bool motor, int pwm)
     }
 }
 
-void driver::go_back(bool motor, int pwm)
+void driver::go_back(bool motor, float pwm)
 {
     if(motor)
     {
@@ -53,13 +53,17 @@ void driver::go_back(bool motor, int pwm)
     } 
 }
 
-void driver::sed_pwm(bool motor, bool direction, int pwm)
+void driver::sed_pwm(bool motor, bool direction, float pwm)
 {
     if(direction)
         go_forward(motor,pwm);
     else
         go_back(motor, pwm);
 }
+
+
+
+
 
 
 
@@ -80,17 +84,22 @@ void driver::sed_motor()
     motor_start_working();
 }
 
-void driver::power(int power_r, int power_l)
+void driver::power(float power_r, float power_l)
 {
     if(power_l > 0)
-        sed_pwm(1, 1, power_l);
+        sed_pwm(1, 1, abs(power_l));
     else
-        sed_pwm(1, 0, power_l);
+        sed_pwm(1, 0, abs(power_l));
 
     if(power_r > 0)
-        sed_pwm(0, 1, power_r);
+        sed_pwm(0, 1, abs(power_r));
     else
-        sed_pwm(0, 0, power_r);
+        sed_pwm(0, 0, abs(power_r));
+}
+
+void driver::rotate(int rotate_0, int rotate_1)
+{
+    
 }
 
 void driver::stop()
