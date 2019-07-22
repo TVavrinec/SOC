@@ -62,7 +62,7 @@ float dp_memori = 0;
 float motor0_power = 0;
 
 float p = 1.1;
-float d = 0.7;
+float d = 1.7;
 
 void IRAM_ATTR PID();
 
@@ -115,6 +115,9 @@ void setup()
 byte m0p;
 byte sp;
 byte sd;
+byte m0_rps;
+byte m0_rps_real;
+int l_position=0;
 void loop()
 {
     if(switch_time+100<millis())
@@ -144,17 +147,22 @@ void loop()
         }
         
     }
-    if(send_time+10<millis())
-    m0p = motor0_power;
-    sp = p*10;
-    sd = d*10;
-    lorris1.send(Serial,0,m0p,sp,sd,motor0_rps);
+    if(send_time+100<millis())
+    {
+        m0p = motor0_power;
+        sp = p*10;
+        sd = d*10;
+        m0_rps = motor0_rps*10;
+        m0_rps_real = (right_encoder-l_position)/0.1;
+        l_position = right_encoder;
+        lorris1.send(Serial,0,m0p,sp,sd,m0_rps,m0_rps_real);
+    }
     // Serial.print(motor0_power);
     // Serial.print("   ");
     // Serial.print(p);
     // Serial.print("   ");
     // Serial.print(d);
-    // Serial.print("   ");♪
+    // Serial.print("   ");
     Serial.println(motor0_rps);
     motor.power(0,motor0_power);
 }
