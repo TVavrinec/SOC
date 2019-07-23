@@ -1,17 +1,30 @@
+#pragma once
+
 #include "RB3202_pinout.hpp"
-#include "motor.hpp"
+#include "RB3202_driver.hpp"
 
 #define FREGUENCY 1000
 #define MAX_PWM 1024
 
-void driver::sed_motor_pwm_pin(gpio_num_t pin, uint8_t channel)
+RB3202_driver::RB3202_driver()
+{
+    sed_all_motor_pins();
+    motor_start_working();
+}
+
+RB3202_driver::RB3202_driver(bool)
+{
+
+}
+
+void RB3202_driver::sed_motor_pwm_pin(gpio_num_t pin, uint8_t channel)
 {
     ledcSetup(channel,FREGUENCY,10);
     ledcWrite(channel,MAX_PWM);
     ledcAttachPin(pin,channel);
 }
 
-void driver::sed_all_motor_pins()
+void RB3202_driver::sed_all_motor_pins()
 {
     pinMode(RB3202::SLEEP_PIN,OUTPUT);
     sed_motor_pwm_pin(RB3202::PWM_M0, 0);
@@ -20,12 +33,12 @@ void driver::sed_all_motor_pins()
     sed_motor_pwm_pin(RB3202::PWM_M3, 3);
 }
 
-int driver::percent_to_pwm(float percent)
+int RB3202_driver::percent_to_pwm(float percent)
 {
     return MAX_PWM - int((percent*0.01)*MAX_PWM);
 }
 
-void driver::go_forward(bool motor, float pwm)
+void RB3202_driver::go_forward(bool motor, float pwm)
 {
     if(motor)
     {
@@ -39,7 +52,7 @@ void driver::go_forward(bool motor, float pwm)
     }
 }
 
-void driver::go_back(bool motor, float pwm)
+void RB3202_driver::go_back(bool motor, float pwm)
 {
     if(motor)
     {
@@ -53,7 +66,7 @@ void driver::go_back(bool motor, float pwm)
     } 
 }
 
-void driver::sed_pwm(bool motor, bool direction, float pwm)
+void RB3202_driver::sed_pwm(bool motor, bool direction, float pwm)
 {
     if(direction)
         go_forward(motor,pwm);
@@ -65,48 +78,37 @@ void driver::sed_pwm(bool motor, bool direction, float pwm)
 
 
 
-
-
-
-
-
-
-
-
-void driver::motor_start_working()
+void RB3202_driver::motor_start_working()
 {
     digitalWrite(RB3202::SLEEP_PIN,HIGH);
 }
 
-void driver::sed_motor()
+void RB3202_driver::solo_power(float power, bool motor)
 {
-    sed_all_motor_pins();
-    motor_start_working();
-}
-
-void driver::power(float power_r, float power_l)
-{
-    if(power_l > 0)
-        sed_pwm(1, 1, abs(power_l));
+    if(power > 0)
+        sed_pwm(motor, 1, abs(power));
     else
-        sed_pwm(1, 0, abs(power_l));
-
-    if(power_r > 0)
-        sed_pwm(0, 1, abs(power_r));
-    else
-        sed_pwm(0, 0, abs(power_r));
+        sed_pwm(motor, 0, abs(power));
 }
 
-void driver::rotate(int rotate_0, int rotate_1)
+void RB3202_driver::power(float power_0, float power_1)
 {
-    
+    if(power_1 > 0)
+        sed_pwm(1, 1, abs(power_1));
+    else
+        sed_pwm(1, 0, abs(power_1));
+
+    if(power_0 > 0)
+        sed_pwm(0, 1, abs(power_0));
+    else
+        sed_pwm(0, 0, abs(power_0));
 }
 
-void driver::stop()
+void RB3202_driver::stop()
 {
     digitalWrite(RB3202::SLEEP_PIN, LOW);
 }
 
-driver::~driver()
+RB3202_driver::~RB3202_driver()
 {
 }
