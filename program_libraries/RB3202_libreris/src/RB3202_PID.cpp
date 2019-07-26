@@ -48,8 +48,30 @@ float RB3202_PID::calcalate_PID(int wheel)
 void RB3202_PID::sed_wheel_power(int wheel)
 {
     RB3202_driver sed;
+    RB3202_encoder encoder;
     if(abs(motor_power[wheel] + calcalate_PID(wheel))<100)
     {
+        switch (driver[wheel])
+        {
+        case 2:
+            motor_power[wheel] += calcalate_PID(wheel);
+            sed.solo_power(motor_power[wheel], wheel);
+            break;
+        case 1:
+            if(plan_position[wheel]>encoder.read_encoder(wheel))
+            {
+                motor_power[wheel] += calcalate_PID(wheel);
+                sed.solo_power(motor_power[wheel], wheel);
+            }
+            else
+            {
+                sed.solo_power(0, wheel);
+                driver[wheel] = 0;
+            }
+            break;
+        default:
+            break;
+        }
         motor_power[wheel] += calcalate_PID(wheel);
         sed.solo_power(motor_power[wheel], wheel);
     }
@@ -79,6 +101,15 @@ void RB3202_PID::wheel_rotate(float rotate, int wheel)
 float RB3202_PID::read_PID_power(int wheel)
 {
     return motor_power[wheel];
+}
+
+void RB3202_PID::motor_go_position(int motor, int distance, int rotate, int wheel_diametr = 69, int encoder_puls = COUNT_STEP)
+{
+    RB3202_encoder encoder;
+    float circuit = wheel_diametr * PI;
+    motor_power[motor] = rotate;
+    plan_position[motor] = encoder.read_encoder(motor)+int((distance/circuit) * encoder_puls);
+    driver[motor] = 2;
 }
 
 RB3202_PID::~RB3202_PID()

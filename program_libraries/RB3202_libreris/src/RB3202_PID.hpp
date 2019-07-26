@@ -2,7 +2,6 @@
 
 #include <Arduino.h>
 
-#define TURN_EDGES 80
 #define COUNT_STEP 0.8
 
 class RB3202_PID
@@ -13,6 +12,9 @@ private:
 
     float dp_memori[2] = {0,0};
     float motor_power[2] = {0,0};
+
+    int plan_position[2];
+    int driver[2] = {0, 0};
 
     float p = 1.1;
     float d = 1.7;
@@ -32,6 +34,7 @@ public:
     void sed_rotate(float wheel0, float wheel1);
     void wheel_rotate(float rotate, int wheel);
     float read_PID_power(int wheel);
+    void motor_go_position(int motor, int distance, int rotate, int wheel_diametr = 69, int encoder_puls = 80);
 
     ~RB3202_PID();
 };

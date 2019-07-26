@@ -1,27 +1,26 @@
 #include <Arduino.h>
 #include "RB3202_lbr.hpp"
+#include "RB3202_PID.hpp"
 #include "lorris_send.hpp"
-
-Parser <0xff,22> lorris1;
-
-RB3202_PID motor_pid;
 
 int switch_time;
 int send_time;
+
+Parser<0xff,10> lorris;
+RB3202_PID motor;
 
 void setup() 
 { 
   Serial.begin(115200);
 
-  //pinMode(RB3202::SMART_SERVO,INPUT_PULLUP);
-  pinMode(GPIO_NUM_14,INPUT_PULLUP);
+  pinMode(GPIO_NUM_39, INPUT_PULLUP);
   
   rb_periphery::sed_periphery();
 
-  motor.sed_motor();
+  motor.sed_rotate(0.3,0.3);
 }
 
 void loop()
 {
-    
+    lorris.send(Serial, 0,analogRead(GPIO_NUM_39));    
 }

@@ -3,6 +3,9 @@
 #include <Arduino.h>
 #include "RB3202_pinout.hpp"
 #include "RB3202_encoder.hpp"
+#include "RB3202_driver.hpp"
+
+#define TURN_EDGES 80
 
 RB3202_encoder::RB3202_encoder()
 {
@@ -23,7 +26,8 @@ void RB3202_encoder::sed_pins_encoder1()
 
 void RB3202_encoder::enc0_calculate()
 {
-   if(digitalRead(RB3202::ENC_A1))
+    RB3202_driver motor;
+    if(digitalRead(RB3202::ENC_A1))
     {
         if(digitalRead(RB3202::ENC_B1))
            enc[0]++;
@@ -37,10 +41,23 @@ void RB3202_encoder::enc0_calculate()
          else
             enc[0]++;
     }
+    if(driver[0])
+    {
+        if(enc[0]<plan_position[0])
+        {
+            motor.solo_power(motor_power[0], 0);
+        }
+        else
+        {
+            motor.solo_power(0,0);
+            driver[0] = false;
+        }
+    }
 }
 void RB3202_encoder::enc1_calculate()
 {
-   if(digitalRead(RB3202::ENC_A2))
+    RB3202_driver motor;
+    if(digitalRead(RB3202::ENC_A2))
     {
         if(digitalRead(RB3202::ENC_B2))
            enc[1]++;
@@ -54,6 +71,29 @@ void RB3202_encoder::enc1_calculate()
          else
             enc[1]++;
     }
+    if(driver[1])
+    {
+        if(enc[1]<plan_position[1])
+        {
+            motor.solo_power(motor_power[1], 1);
+        }
+        else
+        {
+            motor.solo_power(0,1);
+            driver[1] = false;
+        }
+    }
+}
+
+void RB3202_encoder::sed_encoder()
+{
+    RB3202_encoder encoder;
+
+    sed_pins_encoder0();
+    sed_pins_encoder1();
+
+    attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A1), encoder.enc0_calculate, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A2), encoder.enc1_calculate, CHANGE);
 }
 
 
@@ -65,15 +105,12 @@ int RB3202_encoder::read_encoder(bool number_encoder)
     return enc[number_encoder];
 }
 
-void RB3202_encoder::sed_encoder()
+void RB3202_encoder::motor_go_position(int motor, int distance, int power, int wheel_diametr = 69, int encoder_puls = 80)
 {
-    RB3202_encoder encoder;
-
-    sed_pins_encoder0();
-    sed_pins_encoder1();    
-
-    attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A1), encoder.enc0_calculate, CHANGE);
-    attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A2), encoder.enc1_calculate, CHANGE);
+    float circuit = wheel_diametr * PI;
+    motor_power[motor] = power;
+    plan_position[motor] = enc[motor]+int((distance/circuit) * encoder_puls);
+    driver[motor] = true;
 }
 
 RB3202_encoder::~RB3202_encoder()
