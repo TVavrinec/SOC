@@ -8,22 +8,22 @@
 class RB3202_PID
 {
 private:
-    static float wheel_rps[2];
-    static float virtual_vheel[2];
+    float wheel_rps[2];
+    float virtual_vheel[2];
 
-    static float dp_memori[2];
-    static float motor_power[2];
+    float dp_memori[2];
+    float motor_power[2];
 
-    static int plan_position[2];
-    static int driver[2];
+    int plan_position[2];
+    int driver[2];
 
-    static float p;
-    static float d;
+    float p = 1;
+    float d = 2;
 
     hw_timer_t * timer = NULL;
 
     void set_PID_timer();
-    static void PID();
+    void PID();
 
     void rotate_virtual_wheels(float wheel_rpm, int wheel);
     float calcalate_PID(int wheel);
