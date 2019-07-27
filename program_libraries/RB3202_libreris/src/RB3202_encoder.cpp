@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <iostream>
 #include "RB3202_pinout.hpp"
 #include "RB3202_encoder.hpp"
 #include "RB3202_driver.hpp"
@@ -8,6 +7,8 @@
 
 RB3202_encoder::RB3202_encoder()
 {
+    driver[0] = false;
+    driver[1] = false;
     set_encoder();
 }
 
@@ -57,16 +58,16 @@ void RB3202_encoder::enc0_calculate()
 void RB3202_encoder::enc1_calculate()
 {
     RB3202_driver motor;
-    if(digitalRead(RB3202::ENC_A2))
+    if(digitalRead(GPIO_NUM_18))
     {
-        if(digitalRead(RB3202::ENC_B2))
+        if(digitalRead(GPIO_NUM_19))
            enc[1]++;
         else
            enc[1]--;
     }
     else
     {
-         if(digitalRead(RB3202::ENC_B2))
+         if(digitalRead(GPIO_NUM_19))
             enc[1]--;
          else
             enc[1]++;
@@ -80,7 +81,7 @@ void RB3202_encoder::enc1_calculate()
         else
         {
             motor.solo_power(0,1);
-            driver[1] = false;
+            driver[0] = false;
         }
     }
 }

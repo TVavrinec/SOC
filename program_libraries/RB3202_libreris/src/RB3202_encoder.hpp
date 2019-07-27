@@ -2,14 +2,18 @@
 
 class RB3202_encoder
 {
+    friend class RB3202_PID;
+protected:
+    static int enc[2];
+    
 private:
-    int enc[2];
-    int plan_position[2];
-    int motor_power[2];
-    bool driver[2] = {false, false};
+    
+    static int plan_position[2];
+    static int motor_power[2];
+    static bool driver[2];
 
-    void enc0_calculate();
-    void enc1_calculate();
+    static void enc0_calculate();
+    static void enc1_calculate();
 
     void set_pins_encoder0();
     void set_pins_encoder1();

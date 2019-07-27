@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <Arduino.h>
 
 #define COUNT_STEP 0.8
@@ -7,22 +8,22 @@
 class RB3202_PID
 {
 private:
-    float wheel_rps[2] = {0,0};
-    float virtual_vheel[2] = {0,0};
+    static float wheel_rps[2];
+    static float virtual_vheel[2];
 
-    float dp_memori[2] = {0,0};
-    float motor_power[2] = {0,0};
+    static float dp_memori[2];
+    static float motor_power[2];
 
-    int plan_position[2];
-    int driver[2] = {0, 0};
+    static int plan_position[2];
+    static int driver[2];
 
-    float p = 1.1;
-    float d = 1.7;
+    static float p;
+    static float d;
 
     hw_timer_t * timer = NULL;
 
     void set_PID_timer();
-    void IRAM_ATTR PID();
+    static void PID();
 
     void rotate_virtual_wheels(float wheel_rpm, int wheel);
     float calcalate_PID(int wheel);

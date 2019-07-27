@@ -1,87 +1,79 @@
-#pragma once
-
-#include "RB3202_PID.hpp"
 #include "RB3202_encoder.hpp"
+#include "RB3202_PID.hpp"
 #include "RB3202_driver.hpp"
-
-RB3202_PID regulator;
 
 RB3202_PID::RB3202_PID(/* args */)
 {
+    motor_power[0] = 0;
+    motor_power[1] = 0;
+    wheel_rps[0] = 0;
+    wheel_rps[1] = 0;
+    virtual_vheel[0] = 0;
+    virtual_vheel[1] = 0;
+    driver[0] = 0;
+    driver[1] = 0;
+
+    p = 1.1;
+    d = 1.7;
+
     set_PID_timer();
 }
 
 void RB3202_PID::set_PID_timer()
 {
+    RB3202_PID regulator;
     timer = timerBegin(0, 80, true);
     timerAttachInterrupt(timer, regulator.PID, true);
     timerAlarmWrite(timer, 10000, true);
     timerAlarmEnable(timer);
 }
 
-void RB3202_PID::rotate_virtual_wheels(float wheel_rpm, int wheel)
+void RB3202_PID::PID()
 {
-    virtual_vheel[wheel] += (wheel_rpm * COUNT_STEP);
-}
-
-float RB3202_PID::calcalate_PID(int wheel)
-{
-    RB3202_encoder encoder;
+    RB3202_driver set;
     float change_power;
     float distanc_position;
     float p_member;
     float d_member;
 
-    rotate_virtual_wheels(wheel_rps[wheel], wheel);
+    for(int wheel = 0; wheel < 2; wheel++)
+    {   
+        virtual_vheel[wheel] += (wheel_rps[wheel] * COUNT_STEP);
     
-    distanc_position = virtual_vheel[wheel] - encoder.read_encoder(wheel);
+        distanc_position = virtual_vheel[wheel] - RB3202_encoder::enc[wheel];
 
-    p_member = distanc_position *(p/1000);
-    d_member = (distanc_position-dp_memori[wheel])*d;
-    
-    change_power = p_member + d_member;
-    
-    dp_memori[0] = distanc_position;
-    
-    return change_power;
-}
+        p_member = distanc_position *(p/1000);
+        d_member = (distanc_position-dp_memori[wheel])*d;
 
-void RB3202_PID::set_wheel_power(int wheel)
-{
-    RB3202_driver sed;
-    RB3202_encoder encoder;
-    if(abs(motor_power[wheel] + calcalate_PID(wheel))<100)
-    {
-        switch (driver[wheel])
+        change_power = p_member + d_member;
+
+        dp_memori[0] = distanc_position;
+        if(abs(motor_power[wheel] + change_power)<100)
         {
-        case 2:
-            motor_power[wheel] += calcalate_PID(wheel);
-            sed.solo_power(motor_power[wheel], wheel);
-            break;
-        case 1:
-            if(plan_position[wheel]>encoder.read_encoder(wheel))
+            switch(driver[wheel])
             {
-                motor_power[wheel] += calcalate_PID(wheel);
-                sed.solo_power(motor_power[wheel], wheel);
+            case 2:
+                motor_power[wheel] += change_power;
+                set.solo_power(motor_power[wheel], wheel);
+                break;
+            case 1:
+                if(plan_position[wheel]>RB3202_encoder::enc[wheel])
+                {
+                    motor_power[wheel] += change_power;
+                    set.solo_power(motor_power[wheel], wheel);
+                }
+                else
+                {
+                    set.solo_power(0, wheel);
+                    driver[wheel] = 0;
+                }
+                break;
+            default:
+                break;
             }
-            else
-            {
-                sed.solo_power(0, wheel);
-                driver[wheel] = 0;
-            }
-            break;
-        default:
-            break;
+            motor_power[wheel] += change_power;
         }
-        motor_power[wheel] += calcalate_PID(wheel);
-        sed.solo_power(motor_power[wheel], wheel);
     }
-}
-
-void IRAM_ATTR RB3202_PID::PID()
-{
-    set_wheel_power(0);
-    set_wheel_power(1);
 }
 
 

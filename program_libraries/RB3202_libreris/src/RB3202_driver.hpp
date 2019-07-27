@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 
 class RB3202_driver
