@@ -20,7 +20,7 @@ public:
     RB3202_encoder();
 
     int read_encoder(bool);
-    void motor_go_position(int motor, int distance, int power, int wheel_diametr = 69, int encoder_puls = 80);
+    void motor_go_position(int, int, int, int, int);
 
     ~RB3202_encoder();
 };

@@ -13,7 +13,7 @@ void RB3202_PID::sed_PID_timer()
 {
     RB3202_PID regulator;
     timer = timerBegin(0, 80, true);
-    timerAttachInterrupt(timer, &regulator.PID, true);
+    timerAttachInterrupt(timer, regulator.PID, true);
     timerAlarmWrite(timer, 10000, true);
     timerAlarmEnable(timer);
 }

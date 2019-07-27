@@ -34,7 +34,7 @@ public:
     void sed_rotate(float wheel0, float wheel1);
     void wheel_rotate(float rotate, int wheel);
     float read_PID_power(int wheel);
-    void motor_go_position(int motor, int distance, int rotate, int wheel_diametr = 69, int encoder_puls = 80);
+    void motor_go_position(int , int, int, int, int);
 
     ~RB3202_PID();
 };
