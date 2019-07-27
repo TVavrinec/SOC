@@ -17,7 +17,7 @@ void setup()
   
   rb_periphery::sed_periphery();
 
-  motor.sed_rotate(0.3,0.3);
+  motor.set_rotate(0.3,0.3);
 }
 
 void loop()

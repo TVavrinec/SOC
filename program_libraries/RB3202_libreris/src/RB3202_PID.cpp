@@ -4,14 +4,15 @@
 #include "RB3202_encoder.hpp"
 #include "RB3202_driver.hpp"
 
+RB3202_PID regulator;
+
 RB3202_PID::RB3202_PID(/* args */)
 {
-    sed_PID_timer();
+    set_PID_timer();
 }
 
-void RB3202_PID::sed_PID_timer()
+void RB3202_PID::set_PID_timer()
 {
-    RB3202_PID regulator;
     timer = timerBegin(0, 80, true);
     timerAttachInterrupt(timer, regulator.PID, true);
     timerAlarmWrite(timer, 10000, true);
@@ -45,7 +46,7 @@ float RB3202_PID::calcalate_PID(int wheel)
     return change_power;
 }
 
-void RB3202_PID::sed_wheel_power(int wheel)
+void RB3202_PID::set_wheel_power(int wheel)
 {
     RB3202_driver sed;
     RB3202_encoder encoder;
@@ -79,15 +80,15 @@ void RB3202_PID::sed_wheel_power(int wheel)
 
 void IRAM_ATTR RB3202_PID::PID()
 {
-    sed_wheel_power(0);
-    sed_wheel_power(1);
+    set_wheel_power(0);
+    set_wheel_power(1);
 }
 
 
 
 
 
-void RB3202_PID::sed_rotate(float wheel0, float wheel1)
+void RB3202_PID::set_rotate(float wheel0, float wheel1)
 {
     wheel_rps[0] = wheel0;
     wheel_rps[1] = wheel1;

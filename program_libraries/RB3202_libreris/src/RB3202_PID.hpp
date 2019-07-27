@@ -21,17 +21,17 @@ private:
 
     hw_timer_t * timer = NULL;
 
-    void sed_PID_timer();
+    void set_PID_timer();
     void IRAM_ATTR PID();
 
     void rotate_virtual_wheels(float wheel_rpm, int wheel);
     float calcalate_PID(int wheel);
-    void sed_wheel_power(int wheel);
+    void set_wheel_power(int wheel);
 
 public:
     RB3202_PID(/* args */);
 
-    void sed_rotate(float wheel0, float wheel1);
+    void set_rotate(float wheel0, float wheel1);
     void wheel_rotate(float rotate, int wheel);
     float read_PID_power(int wheel);
     void motor_go_position(int , int, int, int, int);

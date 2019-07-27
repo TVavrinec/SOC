@@ -1,6 +1,5 @@
-#pragma once
-
 #include <Arduino.h>
+#include <iostream>
 #include "RB3202_pinout.hpp"
 #include "RB3202_encoder.hpp"
 #include "RB3202_driver.hpp"
@@ -9,16 +8,16 @@
 
 RB3202_encoder::RB3202_encoder()
 {
-    sed_encoder();
+    set_encoder();
 }
 
-void RB3202_encoder::sed_pins_encoder0()
+void RB3202_encoder::set_pins_encoder0()
 {
     pinMode(RB3202::ENC_A1, INPUT_PULLUP);
     pinMode(RB3202::ENC_B1, INPUT_PULLUP);
 }
 
-void RB3202_encoder::sed_pins_encoder1()
+void RB3202_encoder::set_pins_encoder1()
 {
     pinMode(RB3202::ENC_A2, INPUT_PULLUP);
     pinMode(RB3202::ENC_B2, INPUT_PULLUP);
@@ -54,6 +53,7 @@ void RB3202_encoder::enc0_calculate()
         }
     }
 }
+
 void RB3202_encoder::enc1_calculate()
 {
     RB3202_driver motor;
@@ -85,13 +85,13 @@ void RB3202_encoder::enc1_calculate()
     }
 }
 
-void RB3202_encoder::sed_encoder()
+void RB3202_encoder::set_encoder()
 {
     RB3202_encoder encoder;
 
-    sed_pins_encoder0();
-    sed_pins_encoder1();
-
+    set_pins_encoder0();
+    set_pins_encoder1();
+    
     attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A1), encoder.enc0_calculate, CHANGE);
     attachInterrupt(digitalPinToInterrupt(RB3202::ENC_A2), encoder.enc1_calculate, CHANGE);
 }

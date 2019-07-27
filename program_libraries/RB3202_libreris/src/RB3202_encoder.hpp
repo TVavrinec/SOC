@@ -11,10 +11,10 @@ private:
     void enc0_calculate();
     void enc1_calculate();
 
-    void sed_pins_encoder0();
-    void sed_pins_encoder1();
+    void set_pins_encoder0();
+    void set_pins_encoder1();
 
-    void sed_encoder();
+    void set_encoder();
 
 public:
     RB3202_encoder();
