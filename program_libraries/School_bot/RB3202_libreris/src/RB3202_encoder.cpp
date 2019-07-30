@@ -11,16 +11,18 @@
 #include "soc/gpio_sig_map.h"
 #include "esp32-hal-adc.h"
 #include "esp_system.h"
-#include "ESP32_encoder.hpp"
+#include "RB3202_encoder.hpp"
 
-uint64_t ESP32_encoder::gpioInputPinSel = 1;
-uint8_t ESP32_encoder::nextCounterIndex = 0;
+uint64_t RB3202_encoder::gpioInputPinSel = 1;
+uint8_t RB3202_encoder::nextCounterIndex = 0;
 
-void IRAM_ATTR ESP32_encoder::gpio_isr_handler(void* arg) {
+void IRAM_ATTR RB3202_encoder::gpio_isr_handler(void* arg) 
+{
     //Handle edge interrupt time for frequency calculation
     int64_t currentTime = esp_timer_get_time();
     struct CounterTimeData * aCounterTimeData = (struct CounterTimeData *)arg;
-    if(currentTime > aCounterTimeData->counterPrevTime + aCounterTimeData->debounceUs) {
+    if(currentTime > aCounterTimeData->counterPrevTime + aCounterTimeData->debounceUs) 
+    {
         aCounterTimeData->counterTimeDiff = currentTime - aCounterTimeData->counterPrevTime;
         if(gpio_get_level(static_cast<gpio_num_t>(pcntPins[2*(aCounterTimeData->aCounterIndex) + 1])))
             aCounterTimeData->counterTimeDiff = -aCounterTimeData->counterTimeDiff;
@@ -29,30 +31,35 @@ void IRAM_ATTR ESP32_encoder::gpio_isr_handler(void* arg) {
     //TODO - Handle possible PCNT overflow interrupt...
 }
 
-ESP32_encoder::ESP32_encoder(uint8_t aGpioA, uint8_t aGpioB) {
+RB3202_encoder::RB3202_encoder(uint8_t aGpioA, uint8_t aGpioB) 
+{
+    
     counterIndex = nextCounterIndex++;
     if(counterIndex > 7) {  //Out of PCNT units
         return;
     }
     gpioA = aGpioA;
     gpioB = aGpioB;
-    for(uint8_t i = 0; i < 16; ++i) {
+    for(uint8_t i = 0; i < 16; ++i) 
+    {
         if(gpioA == pcntPins[i] )
             break;
-        if(i == 15) {   //Not a PCNT enabled pin selected first
+        if(i == 15) 
+        {   //Not a PCNT enabled pin selected first
             return;
         }
     }
 }
 
-void ESP32_encoder::init() {
+void RB3202_encoder::init() {
     pcnt_ctrl_mode_t lctrl_mode = reverse ? PCNT_MODE_REVERSE : PCNT_MODE_KEEP;
     pcnt_ctrl_mode_t hctrl_mode = reverse ? PCNT_MODE_KEEP : PCNT_MODE_REVERSE;
     pcnt_count_mode_t pos_mode = risingSensitive ? PCNT_COUNT_INC : PCNT_COUNT_DIS;
     pcnt_count_mode_t neg_mode = fallingSensitive ? PCNT_COUNT_DEC : PCNT_COUNT_DIS;
 
     //Initialize PCNT functions
-    pcnt_config_t pcnt_config = {
+    pcnt_config_t pcnt_config = 
+    {
         // Set PCNT input signal and control GPIOs
         gpioA,   //pulse_gpio_num
         gpioB,    //ctrl_gpio_num
@@ -94,7 +101,8 @@ void ESP32_encoder::init() {
     gpioInputPinSel = gpioInputPinSel | (1ULL<<gpioA);
 
     //Initialize interrupts
-    if(enableInterrupts) {
+    if(enableInterrupts) 
+    {
         counterTimeData.counterTimeDiff = 0;
         counterTimeData.counterPrevTime = 0;
         counterTimeData.aCounterIndex = counterIndex;
@@ -120,21 +128,25 @@ void ESP32_encoder::init() {
     }
 }
 
-int32_t ESP32_encoder::getCount() {
+int32_t RB3202_encoder::getCount() 
+
+{
     pcnt_get_counter_value(pcnt_unit_t(counterIndex), &PCNT_internal_count);
     pcnt_counter_clear(pcnt_unit_t(counterIndex));
     PCNT_count += PCNT_internal_count;
     return PCNT_count;
 }
 
-int16_t ESP32_encoder::getDiff() {
+int16_t RB3202_encoder::getDiff() 
+{
     pcnt_get_counter_value(pcnt_unit_t(counterIndex), &PCNT_internal_count);
     pcnt_counter_clear(pcnt_unit_t(counterIndex));
     PCNT_count += PCNT_internal_count;
     return PCNT_internal_count;
 }
 
-float ESP32_encoder::getFrequency() {
+float RB3202_encoder::getFrequency() 
+{
     if(esp_timer_get_time() > (counterTimeData.counterPrevTime + maxPeriodUs))
         frequency = 0.0;
     else if(abs(counterTimeData.counterTimeDiff) < minPeriodUs){
@@ -146,6 +158,7 @@ float ESP32_encoder::getFrequency() {
     return frequency; 
 }
 
-void ESP32_encoder::clearCount() {
+void RB3202_encoder::clearCount() 
+{
     PCNT_count = 0;
 }

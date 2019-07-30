@@ -6,16 +6,10 @@
 
 RB3202_driver::RB3202_driver()
 {
-    set_all_motor_pins();
-    motor_start_working();
+    set_motor();
 }
 
-RB3202_driver::RB3202_driver(bool)
-{
-
-}
-
-void RB3202_driver::set_motor_pwm_pin(gpio_num_t pin, uint8_t channel)
+void RB3202_driver::set_motor_pwm_pins(gpio_num_t pin, uint8_t channel)
 {
     ledcSetup(channel,FREGUENCY,10);
     ledcWrite(channel,MAX_PWM);
@@ -25,10 +19,10 @@ void RB3202_driver::set_motor_pwm_pin(gpio_num_t pin, uint8_t channel)
 void RB3202_driver::set_all_motor_pins()
 {
     pinMode(RB3202::SLEEP_PIN,OUTPUT);
-    set_motor_pwm_pin(RB3202::PWM_M0, 0);
-    set_motor_pwm_pin(RB3202::PWM_M1, 1);
-    set_motor_pwm_pin(RB3202::PWM_M2, 2);
-    set_motor_pwm_pin(RB3202::PWM_M3, 3);
+    set_motor_pwm_pins(RB3202::PWM_M0, 0);
+    set_motor_pwm_pins(RB3202::PWM_M1, 1);
+    set_motor_pwm_pins(RB3202::PWM_M2, 2);
+    set_motor_pwm_pins(RB3202::PWM_M3, 3);
 }
 
 int RB3202_driver::percent_to_pwm(float percent)
@@ -40,13 +34,13 @@ void RB3202_driver::go_forward(bool motor, float pwm)
 {
     if(motor)
     {
-        ledcWrite(0,MAX_PWM);
-        ledcWrite(1,percent_to_pwm(pwm));  
+        ledcWrite(2,MAX_PWM);
+        ledcWrite(3,percent_to_pwm(pwm));  
     }
     else
     {
-        ledcWrite(2,MAX_PWM);
-        ledcWrite(3,percent_to_pwm(pwm));
+        ledcWrite(0,MAX_PWM);
+        ledcWrite(1,percent_to_pwm(pwm));
     }
 }
 
@@ -76,30 +70,49 @@ void RB3202_driver::set_pwm(bool motor, bool direction, float pwm)
 
 
 
+
+
+
+
+
+
+
+
 void RB3202_driver::motor_start_working()
 {
     digitalWrite(RB3202::SLEEP_PIN,HIGH);
 }
 
+void RB3202_driver::set_motor()
+{
+    set_all_motor_pins();
+    motor_start_working();
+}
+
+void RB3202_driver::power(float power_r, float power_l)
+{
+    if(power_l > 0)
+        set_pwm(1, 1, abs(power_l));
+    else
+        set_pwm(1, 0, abs(power_l));
+
+    if(power_r > 0)
+        set_pwm(0, 1, abs(power_r));
+    else
+        set_pwm(0, 0, abs(power_r));
+}
+
 void RB3202_driver::solo_power(float power, bool motor)
 {
+    if(power > 100)
+        power = 100;
+    else if (power < -100)
+        power = -100;
+    
     if(power > 0)
         set_pwm(motor, 1, abs(power));
     else
         set_pwm(motor, 0, abs(power));
-}
-
-void RB3202_driver::power(float power_0, float power_1)
-{
-    if(power_1 > 0)
-        set_pwm(1, 1, abs(power_1));
-    else
-        set_pwm(1, 0, abs(power_1));
-
-    if(power_0 > 0)
-        set_pwm(0, 1, abs(power_0));
-    else
-        set_pwm(0, 0, abs(power_0));
 }
 
 void RB3202_driver::stop()
