@@ -48,13 +48,13 @@ void RB3202_driver::go_back(bool motor, float pwm)
 {
     if(motor)
     {
-        ledcWrite(0,percent_to_pwm(pwm));
-        ledcWrite(1,MAX_PWM);
+        ledcWrite(2,percent_to_pwm(pwm));
+        ledcWrite(3,MAX_PWM);
     }
     else
     {
-        ledcWrite(2,percent_to_pwm(pwm));
-        ledcWrite(3,MAX_PWM);
+        ledcWrite(0,percent_to_pwm(pwm));
+        ledcWrite(1,MAX_PWM);
     } 
 }
 

@@ -3,21 +3,17 @@
 #include "RB3202_driver.hpp"
 #include "RB3202_pinout.hpp"
 
-
+std::mutex mx;
 
 RB3202_driver sed;
 
 RB3202_PID::RB3202_PID(/* args */)
 {
-    set_PID_timer();
-    virtual_vheel[0] = 0;
-    virtual_vheel[1] = 0;
-    
+    set_PID_timer();    
 }
 
 void RB3202_PID::set_PID_timer() 
 {
-    
     new std::thread([&]()
     {
         RB3202_encoder encoder0 (RB3202::ENC_B1, RB3202::ENC_A1);
@@ -26,76 +22,69 @@ void RB3202_PID::set_PID_timer()
         encoder1.init();
         while(1) 
         {
-            encoder[0] = encoder0.getCount();
-            encoder[1] = encoder1.getCount();
-            PID();
-            usleep(10000);
+            for(int a = 0; a<10; a++)
+            {
+                encoder[0] = encoder0.getCount();
+                encoder[1] = encoder1.getCount();
+                rotate_virtual_wheels(wheel_rps[0], 0);
+                rotate_virtual_wheels(wheel_rps[1], 1);
+                PID();
+                usleep(10000);
+            }
         }
     });
-    
 }
 
-void RB3202_PID::rotate_virtual_wheels(float wheel_rpm, int wheel)
+void RB3202_PID::rotate_virtual_wheels(float wheel_rps, int wheel)
 {
-    virtual_vheel[wheel] += (wheel_rpm * COUNT_STEP);
+    virtual_vheel[wheel] += (wheel_rps * COUNT_STEP);
 }
 
 float RB3202_PID::calcalate_PID(int wheel)
 {
     float change_power;
     float distanc_position;
-    float p_member;
+    //float p_member;
     float d_member;
-
-    rotate_virtual_wheels(wheel_rps[wheel], wheel);
     
     distanc_position = virtual_vheel[wheel] - encoder[wheel];
-  
-
-    p_member = distanc_position * p;
+    //p_member = distanc_position * p;
     d_member = (distanc_position-dp_memori[wheel])*d;
     
-    change_power = p_member + d_member;
-    Serial.print(virtual_vheel[wheel]);
-    Serial.print("    ");
-    Serial.print(encoder[wheel]);
-    Serial.print("    ");
-    Serial.print(distanc_position);
-    Serial.print("    ");
-    Serial.print(p_member);
-    Serial.print("    ");
-    Serial.print(dp_memori[wheel]);
-    Serial.print("    ");
-    Serial.print(d_member);
-
+    change_power = d_member;// + p_member;
     dp_memori[wheel] = distanc_position;
-    Serial.println(change_power);
     
     return change_power;
 }
 
 void RB3202_PID::set_wheel_power(int wheel)
 {
-    switch (driver[wheel])
+    float change_power = calcalate_PID(wheel);
+    if(abs(motor_power[wheel] + change_power) <= 120)
     {
-    case 1:
-        motor_power[wheel] += calcalate_PID(wheel);
-        sed.solo_power(motor_power[wheel], wheel);
-        break;
-    case 2:
-        if(plan_position[wheel]>encoder[wheel])
+        switch (driver[wheel])
         {
-            motor_power[wheel] += calcalate_PID(wheel);
+        case 1:
+            motor_power[wheel] += change_power;
             sed.solo_power(motor_power[wheel], wheel);
+            break;
+        case 2:
+            if(plan_position[wheel]>encoder[wheel])
+            {
+                motor_power[wheel] += change_power;
+                sed.solo_power(motor_power[wheel], wheel);
+            }
+            else
+            {
+                sed.solo_power(0, wheel);
+                mx.lock();
+                driver[wheel] = 0;
+                mx.unlock();
+            }
+            break;
+        default:
+            break;
         }
-        else
-        {
-            sed.solo_power(0, wheel);
-            driver[wheel] = 0;
-        }
-        break;
-    default:
-        break;
     }
 }
 
@@ -111,22 +100,29 @@ void RB3202_PID::PID()
 
 void RB3202_PID::off()
 {
-    driver[0];
-    driver[1];
+    mx.lock();
+    driver[0] = 0;
+    driver[1] = 0;
+    mx.unlock();
 }
 
 void RB3202_PID::set_rotate(float wheel0, float wheel1)
 {
     wheel_rps[0] = wheel0;
     wheel_rps[1] = wheel1;
+    mx.lock();
     driver[0] = 1;
     driver[1] = 1;
+    mx.unlock();
 }
 
 void RB3202_PID::wheel_rotate(float rotate, bool wheel)
 {
-    wheel_rps[wheel] = rotate;
+    mx.lock();
     driver[wheel] = 1;
+    mx.unlock();
+
+    wheel_rps[wheel] = rotate;
 }
 
 float RB3202_PID::read_PID_power(int wheel)
@@ -138,9 +134,11 @@ void RB3202_PID::motor_go_position(int motor, int distance, int rotate, int whee
 {
     float circuit = wheel_diametr * PI;
 
-    motor_power[motor] = rotate;
+    wheel_rps[motor] = rotate;
     plan_position[motor] = encoder[motor]+int((distance/circuit) * encoder_puls);
+    mx.lock();
     driver[motor] = 2;
+    mx.unlock();
 }
 
 RB3202_PID::~RB3202_PID()

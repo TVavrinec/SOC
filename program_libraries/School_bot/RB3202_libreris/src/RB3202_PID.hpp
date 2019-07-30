@@ -20,8 +20,8 @@ private:
     int plan_position[2];
     int driver[2] = {0, 0};
 
-    float p = 0;//0.001;
-    float d = 10;
+    const float p = 0;//0.001;
+    const float d = 5;
 
     hw_timer_t * timer = NULL;
 
