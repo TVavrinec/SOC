@@ -247,7 +247,7 @@ pinhed</text>
 <text x="16.7132" y="58.5216" size="1.2" layer="25">32</text>
 <text x="57.0484" y="8.6868" size="1.2" layer="25" rot="R90">POWER</text>
 <text x="53.1368" y="57.658" size="2.54" layer="25">+</text>
-<text x="65.5828" y="51.2572" size="2.54" layer="26" rot="MR0">6-11V</text>
+<text x="65.5828" y="51.2572" size="2.54" layer="26" rot="MR0">7-11V</text>
 <text x="59.182" y="57.15" size="2.54" layer="26" rot="MR0">+</text>
 <text x="63.8048" y="57.3024" size="2.54" layer="26" rot="MR0">-</text>
 <text x="10.16" y="27.94" size="2.54" layer="26" rot="MR180">RB3202_SCHOOL-BOARD_V1</text>
