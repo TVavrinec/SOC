@@ -56,7 +56,7 @@
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
@@ -175,8 +175,8 @@
 <circle x="4.996" y="4.9948" radius="2.4" width="1.016" layer="41"/>
 <circle x="82.296" y="11.7348" radius="3" width="0.1524" layer="25"/>
 <rectangle x1="55.996" y1="21.9948" x2="75.996" y2="31.9948" layer="49" rot="R180"/>
-<dimension x1="0" y1="0" x2="94.996" y2="0" x3="47.498" y3="-12.7" textsize="1.778" layer="1"/>
-<dimension x1="93.98" y1="0" x2="94.0308" y2="59.8932" x3="121.9109125" y3="29.92293125" textsize="1.778" layer="1"/>
+<dimension x1="0" y1="0" x2="94.996" y2="0" x3="47.498" y3="-7.62" textsize="1.778" layer="49"/>
+<dimension x1="93.98" y1="0" x2="94.0308" y2="59.8932" x3="102.15661875" y3="29.939684375" textsize="1.778" layer="49"/>
 <text x="15.0368" y="23.622" size="1.2" layer="25" rot="R90">+3V</text>
 <text x="8.2296" y="12.3952" size="2" layer="25" rot="R180">GND</text>
 <text x="16.002" y="29.1592" size="1.2" layer="25" rot="R270">GND</text>
@@ -5507,19 +5507,19 @@ design rules under a new name.</description>
 <contactref element="IM10" pad="OUT2"/>
 <contactref element="X1" pad="2"/>
 <contactref element="JP12" pad="1"/>
-<polygon width="0.2" layer="1" thermals="no">
-<vertex x="87.796" y="41.7948"/>
-<vertex x="87.796" y="47.5948"/>
-<vertex x="80.796" y="54.5948"/>
-<vertex x="80.796" y="62.5348"/>
-<vertex x="76.096" y="62.5348"/>
-<vertex x="76.096" y="53.1948"/>
-<vertex x="77.396" y="51.8948"/>
-<vertex x="77.396" y="47.8948"/>
-<vertex x="79.196" y="46.0948"/>
-<vertex x="83.596" y="46.0948"/>
-<vertex x="85.596" y="44.0948"/>
-<vertex x="85.596" y="41.4948"/>
+<polygon width="0.5" layer="1">
+<vertex x="87.6436" y="41.6424"/>
+<vertex x="87.6436" y="47.544"/>
+<vertex x="80.5928" y="54.5948"/>
+<vertex x="80.5928" y="62.5348"/>
+<vertex x="76.2484" y="62.5348"/>
+<vertex x="76.2484" y="53.3472"/>
+<vertex x="77.5484" y="52.0472"/>
+<vertex x="77.5484" y="48.0472"/>
+<vertex x="79.3992" y="46.1964"/>
+<vertex x="83.6976" y="46.1964"/>
+<vertex x="85.6976" y="44.1964"/>
+<vertex x="85.6976" y="41.3932"/>
 <vertex x="85.996" y="41.0948"/>
 <vertex x="87.096" y="41.0948"/>
 </polygon>

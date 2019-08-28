@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2019-08-23T15:08:40Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.4.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "SchoolBoard"
+        },
+        "Owner": "Tomas Vavrinec <tomtomrvav@seznam.cz>",
+        "Size": {
+            "X": 95,
+            "Y": 60
+        }
+    }
+}
