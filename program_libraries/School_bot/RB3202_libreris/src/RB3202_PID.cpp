@@ -76,6 +76,7 @@ void RB3202_PID::set_wheel_power(int wheel)
             }
             else
             {
+                wheel_rps[wheel] = 0;
                 sed.solo_power(0, wheel);
                 mx.lock();
                 driver[wheel] = 0;
@@ -130,7 +131,7 @@ float RB3202_PID::read_PID_power(int wheel)
     return motor_power[wheel];
 }
 
-void RB3202_PID::motor_go_position(int motor, int distance, int rotate, int wheel_diametr = 69, int encoder_puls = COUNT_STEP)
+void RB3202_PID::motor_go_position(int motor, int distance, float rotate, int wheel_diametr = 69, int encoder_puls = 480)
 {
     float circuit = wheel_diametr * PI;
 
@@ -139,6 +140,11 @@ void RB3202_PID::motor_go_position(int motor, int distance, int rotate, int whee
     mx.lock();
     driver[motor] = 2;
     mx.unlock();
+}
+
+bool RB3202_PID::driver_state(int wheel)
+{
+    return driver[wheel];
 }
 
 RB3202_PID::~RB3202_PID()

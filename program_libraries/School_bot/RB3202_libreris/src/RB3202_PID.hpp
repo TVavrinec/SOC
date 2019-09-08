@@ -40,7 +40,9 @@ public:
     void set_rotate(float wheel0, float wheel1);
     void wheel_rotate(float rotate, bool wheel);
 
-    void motor_go_position(int , int, int, int, int);
+    void motor_go_position(int , int, float, int, int);
+
+    bool driver_state(int wheel);
 
     float read_PID_power(int wheel);
 
