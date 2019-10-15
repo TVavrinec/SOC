@@ -2,5 +2,6 @@
 
 namespace rb_periphery
 {
-    void sed_periphery();
+    bool sed_periphery();
+    bool LED_on_off(bool state);
 };
