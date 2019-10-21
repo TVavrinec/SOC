@@ -8,21 +8,22 @@ RB3202_PID pid;
 RB3202_driver motor;
 using namespace RB3202;
 
+int x = 0;
+
 void setup() 
 {
   rb_periphery::sed_periphery();
-  motor.power(50,50);
+  new std::thread([&]()
+  {
+    while(true)
+    {
+      Serial.println(pid.read_PID_power(0));
+      usleep(500000);
+    }
+  });
 }
 
 void loop()
 {
-  Serial.println(digitalRead(SW2));
-  if(digitalRead(SW2))
-  {
-    rb_periphery::LED_on_off(0);
-  }
-  else
-  {
-    rb_periphery::LED_on_off(1);
-  }
+  delay(50);
 }
