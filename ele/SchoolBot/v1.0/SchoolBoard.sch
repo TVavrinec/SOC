@@ -29640,9 +29640,9 @@ Robotarna</text>
 <attribute name="VALUE" x="195.58" y="167.132" size="1.778" layer="96"/>
 <attribute name="NAME" x="187.96" y="167.132" size="1.778" layer="95"/>
 </instance>
-<instance part="JP1" gate="A" x="292.1" y="132.08" smashed="yes">
-<attribute name="NAME" x="285.75" y="140.335" size="1.778" layer="95"/>
-<attribute name="VALUE" x="285.75" y="124.46" size="1.778" layer="96"/>
+<instance part="JP1" gate="A" x="292.1" y="134.62" smashed="yes" rot="MR180">
+<attribute name="NAME" x="285.75" y="141.605" size="1.778" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="285.75" y="142.24" size="1.778" layer="96" rot="MR180"/>
 </instance>
 <instance part="JP7" gate="A" x="325.12" y="132.08" smashed="yes">
 <attribute name="NAME" x="318.77" y="140.335" size="1.778" layer="95"/>
@@ -30468,43 +30468,43 @@ Robotarna</text>
 <junction x="116.84" y="180.34"/>
 </segment>
 </net>
-<net name="GPIO32_5V" class="0">
+<net name="GPIO12_5V" class="0">
 <segment>
 <pinref part="IM11" gate="G$1" pin="HIGH4"/>
-<wire x1="264.16" y1="129.54" x2="274.32" y2="129.54" width="0.1524" layer="91"/>
-<label x="271.78" y="129.54" size="1.778" layer="95"/>
-<pinref part="JP1" gate="A" pin="7"/>
+<label x="266.7" y="129.54" size="1.778" layer="95"/>
+<pinref part="JP1" gate="A" pin="1"/>
+<wire x1="289.56" y1="129.54" x2="276.86" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="JP3" gate="A" pin="4"/>
-<wire x1="274.32" y1="129.54" x2="289.56" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="129.54" x2="274.32" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="114.3" x2="289.56" y2="114.3" width="0.1524" layer="91"/>
-<junction x="274.32" y="129.54"/>
+<wire x1="276.86" y1="129.54" x2="264.16" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="276.86" y1="129.54" x2="276.86" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="276.86" y1="114.3" x2="289.56" y2="114.3" width="0.1524" layer="91"/>
+<junction x="276.86" y="129.54"/>
 </segment>
 </net>
-<net name="GPIO13-5V" class="0">
+<net name="GPIO33-5V" class="0">
 <segment>
 <pinref part="IM11" gate="G$1" pin="HIGH2"/>
-<wire x1="264.16" y1="134.62" x2="279.4" y2="134.62" width="0.1524" layer="91"/>
-<label x="271.78" y="134.62" size="1.778" layer="95"/>
-<pinref part="JP1" gate="A" pin="3"/>
+<wire x1="264.16" y1="134.62" x2="281.94" y2="134.62" width="0.1524" layer="91"/>
+<label x="266.7" y="134.62" size="1.778" layer="95"/>
+<pinref part="JP1" gate="A" pin="5"/>
 <pinref part="JP3" gate="A" pin="2"/>
-<wire x1="279.4" y1="134.62" x2="289.56" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="279.4" y1="134.62" x2="279.4" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="279.4" y1="119.38" x2="289.56" y2="119.38" width="0.1524" layer="91"/>
-<junction x="279.4" y="134.62"/>
+<wire x1="281.94" y1="134.62" x2="289.56" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="281.94" y1="134.62" x2="281.94" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="281.94" y1="119.38" x2="289.56" y2="119.38" width="0.1524" layer="91"/>
+<junction x="281.94" y="134.62"/>
 </segment>
 </net>
-<net name="GPIO14-5V" class="0">
+<net name="GPIO32-5V" class="0">
 <segment>
 <pinref part="IM11" gate="G$1" pin="HIGH1"/>
-<wire x1="264.16" y1="137.16" x2="281.94" y2="137.16" width="0.1524" layer="91"/>
-<label x="271.78" y="137.16" size="1.778" layer="95"/>
-<pinref part="JP1" gate="A" pin="1"/>
+<wire x1="264.16" y1="137.16" x2="284.48" y2="137.16" width="0.1524" layer="91"/>
+<label x="266.7" y="137.16" size="1.778" layer="95"/>
+<pinref part="JP1" gate="A" pin="7"/>
 <pinref part="JP3" gate="A" pin="1"/>
-<wire x1="281.94" y1="137.16" x2="289.56" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="289.56" y1="121.92" x2="281.94" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="281.94" y1="121.92" x2="281.94" y2="137.16" width="0.1524" layer="91"/>
-<junction x="281.94" y="137.16"/>
+<wire x1="284.48" y1="137.16" x2="289.56" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="289.56" y1="121.92" x2="284.48" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="121.92" x2="284.48" y2="137.16" width="0.1524" layer="91"/>
+<junction x="284.48" y="137.16"/>
 </segment>
 </net>
 <net name="OFF" class="0">
@@ -30653,17 +30653,17 @@ Robotarna</text>
 <pinref part="JP11" gate="A" pin="3"/>
 </segment>
 </net>
-<net name="GPIO33_5V" class="0">
+<net name="GPIO14_5V" class="0">
 <segment>
 <pinref part="IM11" gate="G$1" pin="HIGH3"/>
-<wire x1="264.16" y1="132.08" x2="276.86" y2="132.08" width="0.1524" layer="91"/>
-<label x="271.78" y="132.08" size="1.778" layer="95"/>
-<pinref part="JP1" gate="A" pin="5"/>
+<label x="266.7" y="132.08" size="1.778" layer="95"/>
+<pinref part="JP1" gate="A" pin="3"/>
+<wire x1="264.16" y1="132.08" x2="279.4" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="JP3" gate="A" pin="3"/>
-<wire x1="276.86" y1="132.08" x2="289.56" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="289.56" y1="116.84" x2="276.86" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="276.86" y1="116.84" x2="276.86" y2="132.08" width="0.1524" layer="91"/>
-<junction x="276.86" y="132.08"/>
+<wire x1="279.4" y1="132.08" x2="289.56" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="289.56" y1="116.84" x2="279.4" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="279.4" y1="116.84" x2="279.4" y2="132.08" width="0.1524" layer="91"/>
+<junction x="279.4" y="132.08"/>
 </segment>
 </net>
 <net name="GPIO12" class="0">
@@ -30708,22 +30708,22 @@ Robotarna</text>
 </net>
 <net name="SERVO_STEPDOWN_5V" class="0">
 <segment>
+<wire x1="304.8" y1="129.54" x2="304.8" y2="132.08" width="0.1524" layer="91"/>
+<label x="292.1" y="144.78" size="1.778" layer="95"/>
 <pinref part="JP1" gate="A" pin="2"/>
-<wire x1="297.18" y1="137.16" x2="304.8" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="304.8" y1="137.16" x2="304.8" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="304.8" y1="132.08" x2="304.8" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="304.8" y1="134.62" x2="304.8" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="304.8" y1="137.16" x2="304.8" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="129.54" x2="304.8" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="4"/>
-<wire x1="304.8" y1="134.62" x2="304.8" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="304.8" y1="132.08" x2="304.8" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="297.18" y1="134.62" x2="304.8" y2="134.62" width="0.1524" layer="91"/>
-<junction x="304.8" y="134.62"/>
-<pinref part="JP1" gate="A" pin="6"/>
 <wire x1="297.18" y1="132.08" x2="304.8" y2="132.08" width="0.1524" layer="91"/>
 <junction x="304.8" y="132.08"/>
+<pinref part="JP1" gate="A" pin="6"/>
+<wire x1="304.8" y1="134.62" x2="297.18" y2="134.62" width="0.1524" layer="91"/>
+<junction x="304.8" y="134.62"/>
 <pinref part="JP1" gate="A" pin="8"/>
-<wire x1="297.18" y1="129.54" x2="304.8" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="304.8" y1="137.16" x2="304.8" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="137.16" x2="304.8" y2="137.16" width="0.1524" layer="91"/>
 <junction x="304.8" y="137.16"/>
-<label x="292.1" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BAT-REF" class="0">
