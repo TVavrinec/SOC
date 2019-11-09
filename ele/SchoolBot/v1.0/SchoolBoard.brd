@@ -240,10 +240,10 @@ pinhed</text>
 <text x="19.05" y="56.4896" size="1.2" layer="25">GPIO</text>
 <text x="19.05" y="51.4096" size="1.2" layer="25">GND</text>
 <text x="18.9992" y="53.8988" size="1.2" layer="25">+5V</text>
-<text x="9.0932" y="58.5216" size="1.2" layer="25">14</text>
-<text x="11.6332" y="58.5216" size="1.2" layer="25">13</text>
-<text x="14.1732" y="58.5216" size="1.2" layer="25">33</text>
-<text x="16.7132" y="58.5216" size="1.2" layer="25">32</text>
+<text x="16.7132" y="58.5216" size="1.2" layer="25">12</text>
+<text x="11.6332" y="58.5216" size="1.2" layer="25">33</text>
+<text x="14.1732" y="58.5216" size="1.2" layer="25">14</text>
+<text x="9.0932" y="58.5216" size="1.2" layer="25">32</text>
 <text x="57.0484" y="8.6868" size="1.2" layer="25" rot="R90">POWER</text>
 <text x="53.1368" y="57.658" size="2.54" layer="25">+</text>
 <text x="65.5828" y="51.2572" size="2.54" layer="26" rot="MR0">7-11V</text>
