@@ -89,17 +89,17 @@ void RB3202_driver::set_motor()
     motor_start_working();
 }
 
-void RB3202_driver::power(float power_r, float power_l)
+void RB3202_driver::power(float power_0, float power_1)
 {
-    if(power_l > 0)
-        set_pwm(1, 1, abs(power_l));
+    if(power_1 > 0)
+        set_pwm(1, 1, abs(power_1));
     else
-        set_pwm(1, 0, abs(power_l));
+        set_pwm(1, 0, abs(power_1));
 
-    if(power_r > 0)
-        set_pwm(0, 1, abs(power_r));
+    if(power_0 > 0)
+        set_pwm(0, 1, abs(power_0));
     else
-        set_pwm(0, 0, abs(power_r));
+        set_pwm(0, 0, abs(power_0));
 }
 
 void RB3202_driver::solo_power(float power, bool motor)

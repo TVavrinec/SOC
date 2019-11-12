@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include <thread>
+#include <mutex>
 #include "RB3202_set.hpp"
 
 bool rb_periphery::sed_periphery()
@@ -13,6 +15,8 @@ bool rb_periphery::sed_periphery()
     pinMode(RB3202::SW1, INPUT_PULLUP);
     pinMode(RB3202::SW2, INPUT_PULLUP);
     pinMode(RB3202::SW3, INPUT_PULLUP);
+
+    return true;
 };
 
 bool rb_periphery::LED_on_off(bool state)
@@ -20,4 +24,21 @@ bool rb_periphery::LED_on_off(bool state)
     digitalWrite(RB3202::LED_R,state);
     digitalWrite(RB3202::LED_G,state);
     digitalWrite(RB3202::LED_B,state);
+
+    return true;
 };
+
+bool rb_periphery::next_thread( bool (*function)(), int repeat, bool micros = false)
+{
+    if(!micros)
+    {
+        repeat *= 1000;
+    }
+    new std::thread([&]()
+    {
+        while(function())
+        {
+            usleep(repeat);
+        }
+    });
+}
