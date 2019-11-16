@@ -22338,8 +22338,8 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="0.95" y1="0.5" x2="0.95" y2="-0.5" width="0.0508" layer="39"/>
 <wire x1="0.95" y1="-0.5" x2="-0.95" y2="-0.5" width="0.0508" layer="39"/>
 <wire x1="-0.95" y1="-0.5" x2="-0.95" y2="0.5" width="0.0508" layer="39"/>
-<smd name="1" x="-0.53" y="0" dx="0.5" dy="0.6" layer="1" roundness="5"/>
-<smd name="2" x="0.53" y="0" dx="0.5" dy="0.6" layer="1" roundness="5"/>
+<smd name="1" x="-0.524" y="0" dx="0.45" dy="0.6" layer="1" roundness="5"/>
+<smd name="2" x="0.524" y="0" dx="0.45" dy="0.6" layer="1" roundness="5"/>
 <text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
 <text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.2951" layer="51"/>
@@ -23307,8 +23307,8 @@ reflow soldering</description>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="C1" library="rcl_upravena" deviceset="C-EU" device="C0402" value="1nf"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
-<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="47k"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="47k"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="10k"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="10k"/>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4P-LOC" device=""/>
@@ -23399,7 +23399,7 @@ reflow soldering</description>
 <part name="C6" library="rcl_upravena" deviceset="C-EU" device="C0402" value="220nf"/>
 <part name="C7" library="rcl_upravena" deviceset="C-EU" device="C0402" value="4.7uf"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
-<part name="C8" library="rcl_upravena" deviceset="C-EU" device="C0603" value="100nf"/>
+<part name="C8" library="rcl_upravena" deviceset="C-EU" device="" value="100nf"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="C9" library="rcl_upravena" deviceset="C-EU" device="C0402"/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
@@ -23750,7 +23750,7 @@ reflow soldering</description>
 <part name="Q8" library="transistor-fet" deviceset="AO3401A" device="SOP-8_EP_5.0X5.0X1.27P" value="AO3401ASOP-8_EP_5.0X5.0X1.27P"/>
 <part name="Q9" library="transistor-fet" deviceset="AO3401A" device="SOP-8_EP_5.0X5.0X1.27P" value="AO3401ASOP-8_EP_5.0X5.0X1.27P"/>
 <part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214BA" package3d_urn="urn:adsk.eagle:package:43453/2"/>
-<part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="47k"/>
+<part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="47k"/>
 <part name="+3V13" library="supply1" deviceset="+3V3" device=""/>
 <part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="100k"/>
 <part name="GND150" library="supply1" deviceset="GND" device=""/>
@@ -23764,7 +23764,7 @@ reflow soldering</description>
 <part name="GND152" library="supply1" deviceset="GND" device=""/>
 <part name="JP8" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
 <part name="LED4" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0603" package3d_urn="urn:adsk.eagle:package:15832/1" value="powerled"/>
-<part name="R25" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="1k"/>
+<part name="R25" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="270"/>
 <part name="GND153" library="supply1" deviceset="GND" device=""/>
 <part name="MAX1" library="maxim" deviceset="MAX485" device="" package3d_urn="urn:adsk.eagle:package:17511/1"/>
 <part name="P+127" library="supply1" deviceset="+5V" device=""/>
@@ -23856,9 +23856,9 @@ reflow soldering</description>
 <attribute name="VALUE" x="119.38" y="69.977" size="1.778" layer="96"/>
 <attribute name="NAME" x="121.92" y="74.549" size="1.778" layer="95" rot="R180"/>
 </instance>
-<instance part="Q3" gate="G$1" x="137.16" y="66.04" smashed="yes" rot="MR270">
-<attribute name="VALUE" x="137.16" y="77.47" size="1.778" layer="96" rot="MR270"/>
-<attribute name="NAME" x="138.684" y="66.802" size="1.778" layer="95" rot="MR0"/>
+<instance part="Q3" gate="G$1" x="137.16" y="63.5" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="140.97" y="55.88" size="1.778" layer="96" rot="MR0"/>
+<attribute name="NAME" x="136.144" y="66.802" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="GND140" gate="1" x="144.78" y="53.34" smashed="yes">
 <attribute name="VALUE" x="142.24" y="50.8" size="1.778" layer="96"/>
@@ -23969,7 +23969,7 @@ reflow soldering</description>
 <segment>
 <pinref part="Q3" gate="G$1" pin="S"/>
 <pinref part="GND140" gate="1" pin="GND"/>
-<wire x1="142.24" y1="66.04" x2="144.78" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="63.5" x2="144.78" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="63.5" x2="144.78" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -24211,9 +24211,10 @@ reflow soldering</description>
 <wire x1="142.24" y1="76.2" x2="139.7" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="76.2" x2="139.7" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="71.12" x2="139.7" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="68.58" x2="152.4" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="71.12" x2="139.7" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="Q3" gate="G$1" pin="G"/>
+<wire x1="152.4" y1="71.12" x2="139.7" y2="71.12" width="0.1524" layer="91"/>
 <junction x="139.7" y="71.12"/>
 </segment>
 </net>
@@ -24242,7 +24243,7 @@ reflow soldering</description>
 <pinref part="Q3" gate="G$1" pin="D"/>
 <wire x1="127" y1="63.5" x2="129.54" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="129.54" y1="63.5" x2="132.08" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="63.5" x2="132.08" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="66.04" x2="129.54" y2="63.5" width="0.1524" layer="91"/>
 <junction x="129.54" y="63.5"/>
 </segment>
@@ -25680,9 +25681,9 @@ reflow soldering</description>
 <instance part="+3V11" gate="G$1" x="27.94" y="55.88" smashed="yes">
 <attribute name="VALUE" x="25.4" y="50.8" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="Q2" gate="G$1" x="25.4" y="111.76" smashed="yes" rot="R90">
-<attribute name="NAME" x="22.86" y="116.84" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="25.4" y="116.84" size="1.778" layer="96" rot="R90"/>
+<instance part="Q2" gate="G$1" x="25.4" y="114.3" smashed="yes" rot="MR90">
+<attribute name="NAME" x="22.86" y="116.84" size="1.778" layer="95" rot="MR90"/>
+<attribute name="VALUE" x="25.4" y="119.38" size="1.778" layer="96" rot="MR90"/>
 </instance>
 <instance part="R22" gate="G$1" x="30.48" y="81.28" smashed="yes" rot="R90">
 <attribute name="NAME" x="28.9814" y="77.47" size="1.778" layer="95" rot="R90"/>
@@ -26786,7 +26787,7 @@ reflow soldering</description>
 <wire x1="325.12" y1="109.22" x2="325.12" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="20.32" y1="111.76" x2="33.02" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="114.3" x2="33.02" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="114.3" x2="33.02" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="P+63" gate="VCC" pin="VCC"/>
 <pinref part="Q2" gate="G$1" pin="D"/>
@@ -26806,7 +26807,7 @@ reflow soldering</description>
 <pinref part="Q6" gate="G$1" pin="D"/>
 <wire x1="22.86" y1="96.52" x2="22.86" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="99.06" x2="27.94" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="99.06" x2="22.86" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="101.6" x2="17.78" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="99.06" x2="22.86" y2="99.06" width="0.1524" layer="91"/>
 <junction x="22.86" y="99.06"/>
@@ -26815,7 +26816,7 @@ reflow soldering</description>
 </net>
 <net name="+5V" class="0">
 <segment>
-<wire x1="30.48" y1="111.76" x2="17.78" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="114.3" x2="17.78" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="114.3" x2="17.78" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="P+64" gate="1" pin="+5V"/>
 <pinref part="R6" gate="G$1" pin="1"/>
