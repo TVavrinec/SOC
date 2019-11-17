@@ -23188,21 +23188,22 @@ reflow soldering</description>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 </package>
 <package name="SOP-8_EP_5.0X5.0X1.27P">
-<smd name="1" x="-1.905" y="1.5" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="9" x="0" y="-1.95" dx="4.61" dy="3.1" layer="1" rot="R180"/>
-<smd name="2" x="-0.635" y="1.5" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="3" x="0.635" y="1.5" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="4" x="1.905" y="1.5" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="5" x="1.905" y="-4" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="6" x="0.635" y="-4" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="7" x="-0.635" y="-4" dx="1" dy="0.8" layer="1" rot="R90"/>
-<smd name="8" x="-1.905" y="-4" dx="1" dy="0.8" layer="1" rot="R90"/>
-<wire x1="-2.5" y1="1.1" x2="2.5" y2="1.1" width="0.1524" layer="21"/>
-<wire x1="2.5" y1="1.1" x2="2.5" y2="-3.9" width="0.1524" layer="21"/>
-<wire x1="2.5" y1="-3.9" x2="-2.5" y2="-3.9" width="0.1524" layer="21"/>
-<wire x1="-2.5" y1="-3.9" x2="-2.5" y2="1.1" width="0.1524" layer="21"/>
-<circle x="-1.905" y="0.508" radius="0.283978125" width="0.1524" layer="21"/>
-<circle x="-2.921" y="0.508" radius="0.127" width="0.1524" layer="21"/>
+<smd name="4" x="-1.895" y="2.92" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="9" x="0.01" y="-0.53" dx="4.61" dy="3.1" layer="1" rot="R180"/>
+<smd name="3" x="-0.625" y="2.92" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="2" x="0.645" y="2.92" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="1" x="1.915" y="2.92" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="8" x="1.915" y="-2.58" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="7" x="0.645" y="-2.58" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="6" x="-0.625" y="-2.58" dx="1" dy="0.8" layer="1" rot="R90"/>
+<smd name="5" x="-1.895" y="-2.58" dx="1" dy="0.8" layer="1" rot="R90"/>
+<wire x1="-2.49" y1="2.52" x2="2.51" y2="2.52" width="0.1524" layer="21"/>
+<wire x1="2.51" y1="2.52" x2="2.51" y2="-2.48" width="0.1524" layer="21"/>
+<wire x1="2.51" y1="-2.48" x2="-2.49" y2="-2.48" width="0.1524" layer="21"/>
+<wire x1="-2.49" y1="-2.48" x2="-2.49" y2="2.52" width="0.1524" layer="21"/>
+<circle x="1.915" y="1.928" radius="0.283978125" width="0.1524" layer="21"/>
+<circle x="3.058" y="1.928" radius="0.127" width="0.1524" layer="21"/>
+<wire x1="-3" y1="2" x2="-3" y2="2.5" width="0.1524" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -23264,7 +23265,7 @@ reflow soldering</description>
 <connects>
 <connect gate="G$1" pin="D" pad="5 6 7 8 9"/>
 <connect gate="G$1" pin="G" pad="4"/>
-<connect gate="G$1" pin="S" pad="1 2 3"/>
+<connect gate="G$1" pin="S" pad="1 2 3" route="any"/>
 </connects>
 <technologies>
 <technology name=""/>
