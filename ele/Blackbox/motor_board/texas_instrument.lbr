@@ -172,6 +172,8 @@
 <wire x1="15.24" y1="-15.24" x2="-15.24" y2="-15.24" width="0.1524" layer="94"/>
 <wire x1="-15.24" y1="-15.24" x2="-15.24" y2="27.94" width="0.1524" layer="94"/>
 </symbol>
+<symbol name="OPT3001">
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="DRV8876" prefix="DRV">
