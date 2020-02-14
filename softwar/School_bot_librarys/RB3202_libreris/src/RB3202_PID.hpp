@@ -28,7 +28,7 @@ private:
     void set_PID_timer();
     void PID();
 
-    void *call_back = nullptr;
+    void (*call_back)() = nullptr;
 
     void rotate_virtual_wheels(float wheel_rpm, int wheel);
     float calcalate_PID(int wheel);
@@ -42,7 +42,7 @@ public:
     void set_rotate(float wheel0, float wheel1);
     void wheel_rotate(float rotate, bool wheel);
 
-    void motor_go_position(int motor, int distance, float cm_per_s, void (*callBack)(), int wheel_diametr = 69, int puls_per_rotate = 480);
+    void motor_go_position(int motor, int distance, float cm_per_s, void (*callBack)() = nullptr, int wheel_diametr = 69, int puls_per_rotate = 480);
     bool motor_go_angle_position(int motor, int angle, float rotate_per_second, int encoder_puls = 480);
 
     bool driver_state(int wheel);

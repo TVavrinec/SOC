@@ -25706,7 +25706,7 @@ reflow soldering</description>
 </instance>
 <instance part="Q1" gate="G$1" x="38.1" y="38.1" smashed="yes" rot="R270">
 <attribute name="VALUE" x="38.1" y="49.53" size="1.778" layer="96" rot="R270"/>
-<attribute name="NAME" x="35.56" y="31.75" size="1.778" layer="95" rot="R270"/>
+<attribute name="NAME" x="36.576" y="39.37" size="1.778" layer="95"/>
 </instance>
 <instance part="R8" gate="G$1" x="27.94" y="43.18" smashed="yes" rot="R270">
 <attribute name="NAME" x="29.4386" y="46.99" size="1.778" layer="95" rot="R270"/>

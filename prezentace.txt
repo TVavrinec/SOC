@@ -1,0 +1,23 @@
+Dobrý den,
+mé jmeno je Tomáš Vavrinec a jsem autorem práce SOČ s názvem Postav si svého prvního robota.
+
+Obsahem mé práce je vývoj robota SchoolBot a především jeho řídící desky, kterou jsem pojmenoval SchoolBoard 
+neboli RB3202 a její nasazení ve výuce několika školních předmětu a řady volnočasových vzdělávacích kurzů.
+
+Proč vlastně vyvijím vlastní systém když je, jak možná výte, na trhu spoustu ruzných robotických hraček.
+Většina mé konkurence je jednoduše příliž drahá.
+Napríklad cena základní sady velmy známé stavebnice LEGO Mindstorm se pohybuje mezi sedmi a devíti tisíci korunami. 
+což, ještě vzhledem k faktu že sákladní sada neobsahuje dostatek senzoru pro soutěžní roboty a je tedy třeba jich 
+koupit více nebo koupit některé ideálně všechny rozšiřující sady, je velice drahé.
+
+Dalším duvodem pro stavbu vlastního robota je fakt že konkurenti nemívají zrovna velké množstní senzoru.
+Abych znovu uvedl příklad.
+vězměme si třeba robota Mbot kterého jistě znáte zajímáte-li se o robotiku.
+Má jen čtyři možné senzory což stačí chcete-li dělat jednoduchou ulohu, například jízdu po čáře 
+ale komplexnejší ulohy vyžadují daleko více senzoryky.
+proto moje deska obsahuje hned dvě pinová pole. To jsou řady pinu (konektoru) procesoru s vyvedeným napájením.
+dvě jsou z toho duvodu že ne všechny senzory operují na stejném napětí.
+dnes je kvuli nižší spotřebě tlak na napájení nižším napětím v případě SchoolBoardu je toto napětí 3.3V což je 
+napájecí napětí řídícího procesoru ESP32 ale starší senzory nebo senzory u kterých by nišší napětí byl problém
+stale komunykují na napětí 5V proto je druhé pinové pole opatřeno převodníkem napětovích urovní a je tedy schopné 
+digitální komunikace na napětí 5V

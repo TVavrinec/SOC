@@ -16,8 +16,8 @@ void RB3202_PID::set_PID_timer()
 {
     new std::thread([&]()
     {
-        RB3202_encoder encoder0 (RB3202::ENC_B1, RB3202::ENC_A1);
-        RB3202_encoder encoder1 (RB3202::ENC_B2, RB3202::ENC_A2);
+        RB3202_encoder encoder0 (RB3202::ENC_A1, RB3202::ENC_B1);
+        RB3202_encoder encoder1 (RB3202::ENC_A2, RB3202::ENC_B2);
         encoder0.init();
         encoder1.init();
         while(1) 
@@ -82,6 +82,7 @@ void RB3202_PID::set_wheel_power(int wheel)
                 mx.lock();
                 driver[wheel] = 1;
                 mx.unlock();
+                
             }
             break;
         default:
@@ -132,7 +133,7 @@ float RB3202_PID::read_PID_power(int wheel)
     return motor_power[wheel];
 }
 
-void RB3202_PID::motor_go_position(int motor, int distance, float cm_per_s, void (*fc)(), int wheel_diametr = 69, int puls_per_rotate = 480)
+void RB3202_PID::motor_go_position(int motor, int distance, float cm_per_s, void (*fc)(), int wheel_diametr, int puls_per_rotate)
 {
     float circuit = wheel_diametr * PI;
 

@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage[czech]{babel} % nastavuje české popisky např. u obsahu, referencí, tabulek, obázků 
+\usepackage[utf8]{inputenc} % použito UTF8 kvůli češtině (zvládá prakticky všechny jazyky na světě)
+
+%\usepackage{indentfirst} % odsazuje první odstavec v kapitole
+
+\usepackage{color} % balíček pro obarvování textů
+% \color{blue}
+\usepackage{xcolor}  % zapne možnost používání barev, mj. pro \definecolor
+\definecolor{mygreen}{RGB}{0,150,0} % nastavení barev odkazů 
+\definecolor{myblue}{RGB}{0,0,200} 
+\definecolor{commentgreen}{RGB}{0,100,0} % nastavení barev pro příklady z C++
+\definecolor{deepblue}{rgb}{0,0,0.7}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{hyperref} % balíček pro hypertextové odkazy
+% \url{www.odkaz.cz}
+% \href{http://www.odkaz.cz}{Text který bude jako odkaz}
+%\hyperlink{label}{proklikávací_text} - odkaz na text 
+% \hypertarget{label}{cíl_odkazu} - cíl odkazu  
+
+
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=mygreen, citecolor=blue, anchorcolor = magenta,
+	linktocpage = true, frenchlinks } % nastavení barvy odkazů 
+% bookmarksopen=true, bookmarksnumbered=true, bookmarksopenlevel=1 - nastavuje rozbalování levého menu       
+
+\usepackage{graphicx} % pro vkládání obrázků a příkaz "\includegraphics"
+%% samotné vložení obrázku
+%\begin{figure}
+%	\includegraphics[width=\textwidth]{../img/when_use_latex.png}
+%	\caption{Kdy se vyplatí použít \LaTeX} % popis, který se zobrazí pod obrázkem
+%	\label{moje_navesti} %identifikuje objekt, který lze pak referencovat
+%\end{figure}
+%% ---------------------------
+
+% Délky a mezery pro celý dokument
+\setlength{\parskip}{0.5ex plus 0.5ex minus 0.2ex} %Nastavuje velikost vertikální mezery mezi odstavci:
+% první číslo je mezera mezi odstavci, druhé nevím a třetí je mezera před začátkem nové kapitoly a podkapitoly
+\parindent=0pt % odstavce nebudou odsazeny zarážkou (velikost odsazení prvního řádku odstavce)
+\usepackage{enumitem} % pro příkaz \setlist
+\setlist{itemsep = -1pt, topsep=3pt} % nastavuje mezery mezi a před výčtovým prosředím (enumerate, itemize ...)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\begin{center}
+	\Huge \textbf{Stejnosměrné stroje} 
+\end{center}
+
+\section*{Anotace}
+Tato práce se zabývá návrhem několika robotických zařízení. Jejich použití při vedení kroužků a výuky předmětů automatizace a elektro.
+Cílem je především vyvinout vhodné zařízení pro náplň několika kroužků a otestování v praxi, jestli jsou opravdu vhodné.
+
+\newpage
+
+\section{Úvod}
+Projekt je cílen na začínající robotiky, případně na lidi, kteří se chtějí s robotikou seznámit, ale nechtějí jimi strávit velké množství času. 
+\subsection{SchoolBot}
+SchoolBot jsem primárně navrhoval pro školní kroužek robotiky a je určen pro začátečníky, ale ne pro menší děti primárně je cílený na středoškoláky.
+\subsection{BlackBox}
+BlackBox prakticky nemá omezení, má rozmanité senzory, díky kterým muže nabývat různých podob od trezor po hodiny.
+
+
+
+\end{document}
+
+

@@ -28,7 +28,7 @@ bool rb_periphery::LED_on_off(bool state)
     return true;
 };
 
-bool rb_periphery::next_thread( bool (*function)(), int repeat, bool micros = false)
+bool rb_periphery::next_thread( bool (*function)(), int repeat, bool micros)
 {
     if(!micros)
     {
