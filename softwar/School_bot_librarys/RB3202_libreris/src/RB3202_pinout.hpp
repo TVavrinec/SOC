@@ -24,9 +24,9 @@ namespace RB3202
     static const gpio_num_t SW2 = GPIO_NUM_27;
     static const gpio_num_t SW3 = GPIO_NUM_26;
 
-    static const gpio_num_t LED_B = GPIO_NUM_21;
-    static const gpio_num_t LED_G = GPIO_NUM_22;
-    static const gpio_num_t LED_R = GPIO_NUM_23;
+    static const gpio_num_t LED_r = GPIO_NUM_21;
+    static const gpio_num_t LED_g = GPIO_NUM_22;
+    static const gpio_num_t LED_b = GPIO_NUM_23;
 
     static const gpio_num_t SMART_SERVO = GPIO_NUM_23;
 

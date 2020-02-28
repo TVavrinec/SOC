@@ -1,3 +1,4 @@
+/*
 #include "RB3202_PID.hpp"
 #include "RB3202_encoder.hpp"
 #include "RB3202_driver.hpp"
@@ -7,7 +8,7 @@ std::mutex mx;
 
 RB3202_driver sed;
 
-RB3202_PID::RB3202_PID(/* args */)
+RB3202_PID::RB3202_PID()
 {
     set_PID_timer();    
 }
@@ -78,7 +79,7 @@ void RB3202_PID::set_wheel_power(int wheel)
             {
                 wheel_rps[wheel] = 0;
                 sed.solo_power(0, wheel);
-                call_back;
+                //call_back;
                 mx.lock();
                 driver[wheel] = 1;
                 mx.unlock();
@@ -163,3 +164,4 @@ bool RB3202_PID::driver_state(int wheel)
 RB3202_PID::~RB3202_PID()
 {
 }
+*/

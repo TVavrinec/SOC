@@ -1,46 +1,28 @@
-#include <Arduino.h>
 #include "RB3202_lbr.hpp"
 
-RB3202_PID pid;
+bool vreteno = 0;
 
-float speed = 0;
-void fc()
-{
-  digitalWrite(RB3202::LED_G, HIGH);
-}
+using namespace RB3202;
+using namespace rb_periphery;
 
-void setup() 
+void setup()
 {
-  Serial.begin(115200);
-  rb_periphery::sed_periphery();
-  //pid.motor_go_position(0,1000,100,*fc,70,480);
-  //delay(10000);
+  sed_periphery();
 }
 
 void loop()
 {
-  if(!digitalRead(RB3202::SW0))
+  if(vreteno)
   {
-    speed += 0.1;
-    Serial.println(speed);
+    if(read_button(SW0))
+    {
+      led_state(1, LED_R);
+    }
+    if(read_button(SW1))
+    {
+      led_state(0, LED_R);
+    }
   }
-  else if(!digitalRead(RB3202::SW1))
-  {
-    speed ++;
-    Serial.println(speed);
-  }
-  else if(!digitalRead(RB3202::SW2))
-  {
-    speed -= 0.1;
-    Serial.println(speed);
-  }
-  else if(!digitalRead(RB3202::SW3))
-  {
-    speed --;
-    Serial.println(speed);
-  }
-  pid.set_rotate(speed,speed);
-  Serial.print("motor power");
-  Serial.println(pid.read_PID_power(0));
+
   delay(100);
 }
