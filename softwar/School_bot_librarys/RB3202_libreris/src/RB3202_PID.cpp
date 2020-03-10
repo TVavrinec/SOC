@@ -1,4 +1,3 @@
-/*
 #include "RB3202_PID.hpp"
 #include "RB3202_encoder.hpp"
 #include "RB3202_driver.hpp"
@@ -13,7 +12,7 @@ RB3202_PID::RB3202_PID()
     set_PID_timer();    
 }
 
-void RB3202_PID::set_PID_timer() 
+bool RB3202_PID::set_PID_timer() 
 {
     new std::thread([&]()
     {
@@ -34,11 +33,13 @@ void RB3202_PID::set_PID_timer()
             }
         }
     });
+    return true;
 }
 
-void RB3202_PID::rotate_virtual_wheels(float wheel_rps, int wheel)
+float RB3202_PID::rotate_virtual_wheels(float wheel_rps, int wheel)
 {
     virtual_vheel[wheel] += (wheel_rps * COUNT_STEP);
+    return virtual_vheel[wheel];
 }
 
 float RB3202_PID::calcalate_PID(int wheel)
@@ -58,7 +59,7 @@ float RB3202_PID::calcalate_PID(int wheel)
     return change_power;
 }
 
-void RB3202_PID::set_wheel_power(int wheel)
+float RB3202_PID::set_wheel_power(int wheel)
 {
     float change_power = calcalate_PID(wheel);
     if(abs(motor_power[wheel] + change_power) <= 120)
@@ -79,23 +80,23 @@ void RB3202_PID::set_wheel_power(int wheel)
             {
                 wheel_rps[wheel] = 0;
                 sed.solo_power(0, wheel);
-                //call_back;
                 mx.lock();
                 driver[wheel] = 1;
                 mx.unlock();
-                
             }
             break;
         default:
             break;
         }
     }
+    return motor_power[wheel];
 }
 
-void RB3202_PID::PID()
+bool RB3202_PID::PID()
 {
     set_wheel_power(0);
     set_wheel_power(1);
+    return 1;
 }
 
 
@@ -161,7 +162,11 @@ bool RB3202_PID::driver_state(int wheel)
     return driver[wheel];
 }
 
+int32_t RB3202_PID::get_motor_position(int wheel)
+{
+    return encoder[wheel];
+}
+
 RB3202_PID::~RB3202_PID()
 {
 }
-*/
